@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adatelemzés 1. Képletgyűjtemény és Interaktív Puska</title>
+    <title>Adatelemzés 1. Teljes Képletgyűjtemény és Interaktív Puska</title>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
         :root {
@@ -55,17 +55,16 @@
             transition: transform 0.2s;
         }
 
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
         .formula-box {
             background: #f8f9fa;
             border-left: 4px solid var(--accent-color);
             padding: 10px;
             margin: 10px 0;
             overflow-x: auto;
-        }
-
-        .important {
-            color: #e74c3c;
-            font-weight: bold;
         }
 
         table {
@@ -82,6 +81,12 @@
 
         th {
             background-color: #f2f2f2;
+        }
+
+        .legend {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
         }
 
         /* Flashcard styles */
@@ -125,19 +130,9 @@
         }
 
         .flashcard.active .flashcard-answer {
-            max-height: 500px; /* Large enough to fit content */
+            max-height: 500px;
             padding: 15px;
             border-top-width: 1px;
-        }
-
-        .btn-show {
-            background: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.8rem;
         }
 
         @media print {
@@ -153,113 +148,163 @@
 <body>
 
 <header>
-    <h1>Adatelemzés 1. Képletgyűjtemény & Interaktív Tananyag</h1>
-    <p>Elmélet, Képletek és Vizsgakérdések</p>
+    <h1>Adatelemzés 1. Teljes Képletgyűjtemény & Puska</h1>
+    <p>Mindent egy helyen: Elmélet, Képletek és Interaktív Vizsgakérdések</p>
 </header>
 
 <div class="container">
     <!-- 1. Alapfogalmak és Viszonyszámok -->
     <div class="section">
-        <h2>1. Alapfogalmak & Elmélet</h2>
-        <div class="flashcard">
-            <div class="flashcard-question">Mi az arányskála?</div>
-            <div class="flashcard-answer">Az ismérvek legmagasabb mérési szintje. Itt a 0 pont valódi (nem önkényes), és az értékek hányadosa is értelmezhető (pl. súly, kor, jövedelem).</div>
+        <h2>1. Alapfogalmak & Viszonyszámok</h2>
+        <h3>Mérési szintek (Skálák)</h3>
+        <ul>
+            <li><strong>Névleges (Nominális):</strong> Csak megkülönböztetés (pl. nem, hajszín).</li>
+            <li><strong>Sorrendi (Ordinális):</strong> Sorrendbe állítható (pl. iskolai végzettség).</li>
+            <li><strong>Különbségi (Intervallum):</strong> Különbség értelmezhető (pl. hőmérséklet °C).</li>
+            <li><strong>Arány:</strong> Hányados is értelmezhető, van valódi 0 pont (pl. kor, jövedelem).</li>
+        </ul>
+
+        <h3>Viszonyszámok \( V = \frac{A}{B} \)</h3>
+        <ul>
+            <li><strong>Megoszlási:</strong> Rész / Egész (\( g_i = f_i / N \)).</li>
+            <li><strong>Koordinációs:</strong> Rész / Rész.</li>
+            <li><strong>Intenzitási:</strong> Különböző fajta adatok hányadosa (pl. népsűrűség).</li>
+            <li><strong>Dinamikus:</strong> Bázis (\( y_i / y_{base} \)) és Lánc (\( y_i / y_{i-1} \)).</li>
+        </ul>
+    </div>
+
+    <!-- 2. Középértékek -->
+    <div class="section">
+        <h2>2. Középértékek (Helyzeti & Számított)</h2>
+        <h3>Helyzeti középértékek</h3>
+        <ul>
+            <li><strong>Módusz (\(Mo\)):</strong> Leggyakoribb érték. Osztályközösnél: \( Mo = x_{i,0} + \frac{k_1}{k_1+k_2} \cdot h \).</li>
+            <li><strong>Medián (\(Me\)):</strong> Középső érték. Osztályközösnél: \( Me = x_{i,0} + \frac{N/2 - f_{i-1}'}{f_i} \cdot h \).</li>
+        </ul>
+
+        <h3>Számított középértékek (Átlagok)</h3>
+        <div class="formula-box">
+            Számtani: \( \bar{x} = \frac{\sum f_i x_i}{N} \) | Harmonikus: \( \bar{x}_h = \frac{N}{\sum \frac{f_i}{x_i}} \)
         </div>
-        <div class="flashcard">
-            <div class="flashcard-question">Nominális vs. Ordinális skála?</div>
-            <div class="flashcard-answer"><b>Nominális (Névleges):</b> Csak megkülönböztetésre jó (pl. nem, hajszín). <br><b>Ordinális (Sorrendi):</b> Sorrendbe rakható, de a különbség nem mérhető (pl. iskolai végzettség, katonai rang).</div>
+        <div class="formula-box">
+            Mértani: \( \bar{x}_g = \sqrt[N]{\prod x_i^{f_i}} \) | Négyzetes: \( \bar{x}_q = \sqrt{\frac{\sum f_i x_i^2}{N}} \)
         </div>
-        <div class="flashcard">
-            <div class="flashcard-question">Mi a különbség a bázis- és láncviszonyszám között?</div>
-            <div class="flashcard-answer"><b>Bázis:</b> Minden adatot egyetlen kitüntetett (bázis) időszakhoz hasonlítunk (\(y_i/y_0\)). <br><b>Lánc:</b> Minden adatot a közvetlenül megelőző időszakhoz hasonlítunk (\(y_i/y_{i-1}\)).</div>
+        <p class="legend">\( \bar{x}_h \leq \bar{x}_g \leq \bar{x} \leq \bar{x}_q \)</p>
+    </div>
+
+    <!-- 3. Szóródási és Alakmutatók -->
+    <div class="section">
+        <h2>3. Szóródási és Alakmutatók</h2>
+        <div class="formula-box">
+            <strong>Szórás (\( \sigma \)):</strong> \( \sigma = \sqrt{\frac{\sum x_i^2 f_i}{N} - \bar{x}^2} \)
+        </div>
+        <div class="formula-box">
+            <strong>Relatív szórás:</strong> \( V = \frac{\sigma}{\bar{x}} \) | <strong>Variancia:</strong> \( \sigma^2 \)
+        </div>
+        <div class="formula-box">
+            <strong>IQR:</strong> \( Q_3 - Q_1 \) | <strong>Terjedelem:</strong> \( x_{max} - x_{min} \)
         </div>
 
-        <h3>Képletek</h3>
+        <h3>Aszimmetria</h3>
         <div class="formula-box">
-            Viszonyszámok: \( V = \frac{A}{B} \) (A: viszonyított, B: bázis)
+            \( A = \frac{\bar{x} - Mo}{\sigma} \) | \( F = \frac{(Q_3 - Me) - (Me - Q_1)}{IQR} \)
         </div>
     </div>
 
-    <!-- 2. Középértékek és Aszimmetria -->
+    <!-- 4. Indexszámítás -->
     <div class="section">
-        <h2>2. Középértékek & Aszimmetria</h2>
-        <div class="flashcard">
-            <div class="flashcard-question">Mikor nincs módusza egy sokaságnak?</div>
-            <div class="flashcard-answer">Ha minden megfigyelt érték különböző (mindenki csak egyszer fordul elő).</div>
-        </div>
-        <div class="flashcard">
-            <div class="flashcard-question">Hogyan értelmezzük az A-mutatót?</div>
-            <div class="flashcard-answer">\( A = \frac{\bar{x} - Mo}{\sigma} \). <br>Ha \(A > 0\): Balra aszimmetrikus (jobbra nyúlt). <br>Ha \(A < 0\): Jobbra aszimmetrikus (balra nyúlt). <br>Ha \(A = 0\): Szimmetrikus.</div>
-        </div>
-
-        <h3>Képletek</h3>
+        <h2>4. Indexszámítás</h2>
+        <table>
+            <tr>
+                <th>Típus</th>
+                <th>Laspeyres (bázis)</th>
+                <th>Paasche (tárgy)</th>
+            </tr>
+            <tr>
+                <td><strong>Ár (\( I_p \))</strong></td>
+                <td>\( \frac{\sum q_0 p_1}{\sum q_0 p_0} \)</td>
+                <td>\( \frac{\sum q_1 p_1}{\sum q_1 p_0} \)</td>
+            </tr>
+            <tr>
+                <td><strong>Volumen (\( I_q \))</strong></td>
+                <td>\( \frac{\sum q_1 p_0}{\sum q_0 p_0} \)</td>
+                <td>\( \frac{\sum q_1 p_1}{\sum q_0 p_1} \)</td>
+            </tr>
+        </table>
         <div class="formula-box">
-            \( \bar{x}_h \leq \bar{x}_g \leq \bar{x} \leq \bar{x}_q \)
-        </div>
-        <div class="formula-box">
-            <b>Szórás:</b> \( \sigma = \sqrt{\frac{\sum x_i^2}{N} - \bar{x}^2} \)
+            <strong>Fisher:</strong> \( \sqrt{I^L \cdot I^P} \) | <strong>Értékindex:</strong> \( I_v = \frac{\sum q_1 p_1}{\sum q_0 p_0} \)
         </div>
     </div>
 
-    <!-- 3. Indexszámítás és Standardizálás -->
+    <!-- 5. Standardizálás -->
     <div class="section">
-        <h2>3. Indexszámítás & Standardizálás</h2>
-        <div class="flashcard">
-            <div class="flashcard-question">Mi a különbség a Laspeyres és Paasche index között?</div>
-            <div class="flashcard-answer">A <b>Laspeyres</b> a bázisidőszaki mennyiségekkel (\(q_0\)) súlyoz, míg a <b>Paasche</b> a tárgyidőszaki (\(q_1\)) mennyiségekkel.</div>
+        <h2>5. Standardizálás</h2>
+        <div class="formula-box">
+            <strong>Teljes eltérés:</strong> \( K = \bar{V}_1 - \bar{V}_0 \)
         </div>
-        <div class="flashcard">
-            <div class="flashcard-question">Mi az összetétel-hatás a standardizálásnál?</div>
-            <div class="flashcard-answer">Azt mutatja meg, hogy a főátlag változása mennyiben köszönhető a sokaság belső összetételének (arányainak) megváltozásának.</div>
+        <div class="formula-box">
+            <strong>Részátlag-hatás:</strong> \( K' = \bar{V}_1 - \bar{V}_{st} = \frac{\sum f_1 x_1}{\sum f_1} - \frac{\sum f_1 x_0}{\sum f_1} \)
         </div>
+        <div class="formula-box">
+            <strong>Összetétel-hatás:</strong> \( K'' = \bar{V}_{st} - \bar{V}_0 = \frac{\sum f_1 x_0}{\sum f_1} - \frac{\sum f_0 x_0}{\sum f_0} \)
+        </div>
+        <p>Összefüggés: \( K = K' + K'' \)</p>
+    </div>
 
-        <h3>Képletek</h3>
+    <!-- 6. Valószínűségszámítás -->
+    <div class="section">
+        <h2>6. Valószínűségszámítás</h2>
         <div class="formula-box">
-            <b>Fisher-árindex:</b> \( I_p^F = \sqrt{I_p^L \cdot I_p^P} \)
+            <strong>Bayes-tétel:</strong> \( P(B_i | A) = \frac{P(B_i) P(A | B_i)}{\sum P(B_j) P(A | B_j)} \)
         </div>
         <div class="formula-box">
-            <b>Standardizálás:</b> \( K = K' + K'' \) (Teljes = Részátlag + Összetétel hatás)
+            <strong>Binomiális:</strong> \( \binom{n}{k} p^k (1-p)^{n-k} \) | <strong>Poisson:</strong> \( \frac{\lambda^k}{k!} e^{-\lambda} \)
+        </div>
+        <div class="formula-box">
+            <strong>Normális:</strong> \( Z = \frac{X - \mu}{\sigma} \); \( P(X < x) = \Phi(Z) \)
         </div>
     </div>
 
-    <!-- 4. Interaktív Vizsgakérdések -->
+    <!-- 7. Elméleti Villámkérdések -->
     <div class="section">
-        <h2>4. Interaktív Vizsgakérdések</h2>
-        
+        <h2>7. Elméleti Villámkérdések</h2>
         <div class="flashcard">
-            <div class="flashcard-question">1. Kérdés: Átlagok sorrendje</div>
+            <div class="flashcard-question">Mi az arányskála lényege?</div>
+            <div class="flashcard-answer">A legmagasabb mérési szint. Van valódi 0 pontja, és az értékek hányadosa is értelmezhető (pl. jövedelem, kor).</div>
+        </div>
+        <div class="flashcard">
+            <div class="flashcard-question">Mikor használunk harmonikus átlagot?</div>
+            <div class="flashcard-answer">Ha az intenzitási viszonyszám számlálója (pl. a megtett út) rögzített, és az átlagos értéket (pl. sebesség) keressük.</div>
+        </div>
+        <div class="flashcard">
+            <div class="flashcard-question">Milyen az eloszlás, ha A-mutató > 0?</div>
+            <div class="flashcard-answer">Balra aszimmetrikus, ami azt jelenti, hogy a jobb oldali szára hosszan elnyúlik (jobbra nyúlt).</div>
+        </div>
+    </div>
+
+    <!-- 8. Interaktív Vizsgapéldák -->
+    <div class="section">
+        <h2>8. Interaktív Vizsgapéldák</h2>
+        <div class="flashcard">
+            <div class="flashcard-question">Példa: Átlagok azonosítása</div>
             <div class="flashcard-answer">
-                Kaptunk 4 átlagot: 40,0; 35,0; 29,2; 43,7. Melyik melyik?<br><br>
-                <b>Megoldás:</b> A nagyságrendi szabály (\( \bar{x}_h \leq \bar{x}_g \leq \bar{x} \leq \bar{x}_q \)) alapján:<br>
-                - 29,2: Harmonikus (\(\bar{x}_h\))<br>
-                - 35,0: Mértani (\(\bar{x}_g\))<br>
-                - 40,0: Számtani (\(\bar{x}\))<br>
-                - 43,7: Négyzetes (\(\bar{x}_q\))
+                Értékek: 40,0; 35,0; 29,2; 43,7. Melyik melyik?<br>
+                <b>Válasz:</b> A nagyságrendi szabály (\( \bar{x}_h \leq \bar{x}_g \leq \bar{x} \leq \bar{x}_q \)) alapján:<br>
+                29,2: Harmonikus | 35,0: Mértani | 40,0: Számtani | 43,7: Négyzetes
             </div>
         </div>
-
         <div class="flashcard">
-            <div class="flashcard-question">2. Kérdés: Kvartilis értelmezése</div>
+            <div class="flashcard-question">Példa: Kvartilis jelentése</div>
             <div class="flashcard-answer">
-                Mit jelent, ha \(Q_3 = 28,5 \text{ kg}\)?<br><br>
-                <b>Válasz:</b> Az adatok (dobozok) 75%-a könnyebb 28,5 kg-nál, és 25%-a nehezebb ennél az értéknél.
+                Mit jelent, ha \(Q_1 = 15 \text{ perc}\)?<br>
+                <b>Válasz:</b> A megfigyeltek 25%-a 15 percnél kevesebb, 75%-a pedig 15 percnél több időt töltött az adott tevékenységgel.
             </div>
         </div>
-
         <div class="flashcard">
-            <div class="flashcard-question">3. Kérdés: Poisson vs. Binomiális</div>
+            <div class="flashcard-question">Példa: Herfindahl-index</div>
             <div class="flashcard-answer">
-                Mikor használunk Poisson eloszlást a Binomiális helyett?<br><br>
-                <b>Válasz:</b> Ritka eseményeknél, ha a kísérletek száma (\(n\)) nagy, de a bekövetkezési valószínűség (\(p\)) kicsi (\(n \to \infty, p \to 0\)), és a kettő szorzata (\(np = \lambda\)) állandó.
-            </div>
-        </div>
-
-        <div class="flashcard">
-            <div class="flashcard-question">4. Kérdés: Mi a Herfindahl-index limitje?</div>
-            <div class="flashcard-answer">
-                <b>Válasz:</b> \( 1/K \leq HI \leq 1 \). <br>
-                Ha \(HI = 1\), akkor teljes a koncentráció (egy kézben van minden). <br>
-                Ha \(HI = 1/K\), akkor nincs koncentráció (mindenki egyenlő).
+                Mennyi a HI értéke, ha 5 cég egyenlő arányban uralja a piacot?<br>
+                <b>Válasz:</b> \(HI = 1/K = 1/5 = 0,2\). Ez a koncentráció hiányát (egyenletes eloszlást) jelenti.
             </div>
         </div>
     </div>
@@ -274,7 +319,7 @@
 </script>
 
 <footer style="margin-top: 40px; text-align: center; color: #777;">
-    <p>&copy; 2026 Adatelemzés 1. Interaktív Segédlet | Készítette: Gemini CLI</p>
+    <p>&copy; 2026 Adatelemzés 1. Összesített Segédlet | Készítette: Gemini CLI</p>
 </footer>
 
 </body>
