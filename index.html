@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adatelemzés 1. Képletgyűjtemény és Puska</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #333;
+            --border-radius: 8px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        h1 { margin: 0; font-size: 2rem; }
+        h2 { color: var(--primary-color); border-bottom: 2px solid var(--accent-color); padding-bottom: 5px; margin-top: 25px; }
+        h3 { color: var(--secondary-color); margin-top: 15px; font-size: 1.2rem; }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .formula-box {
+            background: #f8f9fa;
+            border-left: 4px solid var(--accent-color);
+            padding: 10px;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+
+        .important {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .legend {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        @media print {
+            body { padding: 0; background-color: white; }
+            .container { display: block; }
+            .section { box-shadow: none; border: 1px solid #ddd; margin-bottom: 20px; break-inside: avoid; }
+            header { background: none; color: black; border: 1px solid #ddd; }
+            .section:hover { transform: none; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Adatelemzés 1. (Statisztika & Valószínűségszámítás)</h1>
+    <p>Képletgyűjtemény és vizsgasegédlet</p>
+</header>
+
+<div class="container">
+    <!-- 1. Alapfogalmak és Viszonyszámok -->
+    <div class="section">
+        <h2>1. Alapfogalmak & Viszonyszámok</h2>
+        <h3>Mérési szintek (Skálák)</h3>
+        <ul>
+            <li><strong>Névleges (Nominális):</strong> Csak megkülönböztetés (pl. nem, hajszín).</li>
+            <li><strong>Sorrendi (Ordinális):</strong> Sorrendbe állítható (pl. iskolai végzettség).</li>
+            <li><strong>Különbségi (Intervallum):</strong> Különbség értelmezhető (pl. hőmérséklet °C).</li>
+            <li><strong>Arány:</strong> Hányados is értelmezhető, van valódi 0 pont (pl. kor, jövedelem).</li>
+        </ul>
+
+        <h3>Viszonyszámok \( V = \frac{A}{B} \)</h3>
+        <ul>
+            <li><strong>Megoszlási:</strong> Rész / Egész (\( g_i = f_i / N \)).</li>
+            <li><strong>Koordinációs:</strong> Rész / Rész.</li>
+            <li><strong>Intenzitási:</strong> Különböző fajta adatok hányadosa (pl. népsűrűség).</li>
+            <li><strong>Dinamikus:</strong> Időbeli változás.
+                <ul>
+                    <li>Bázis: \( y_i / y_{base} \) (mindig ugyanahhoz).</li>
+                    <li>Lánc: \( y_i / y_{i-1} \) (előzőhöz).</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 2. Középértékek -->
+    <div class="section">
+        <h2>2. Középértékek (Helyzeti & Számított)</h2>
+        <h3>Helyzeti középértékek</h3>
+        <ul>
+            <li><strong>Módusz (\(Mo\)):</strong> Leggyakoribb érték. Osztályközösnél: \( Mo = x_{i,0} + \frac{k_1}{k_1+k_2} \cdot h \).</li>
+            <li><strong>Medián (\(Me\)):</strong> Középső érték (rangsorban). Osztályközösnél: \( Me = x_{i,0} + \frac{N/2 - f_{i-1}'}{f_i} \cdot h \).</li>
+        </ul>
+
+        <h3>Számított középértékek (Átlagok)</h3>
+        <div class="formula-box">
+            <strong>Számtani átlag (\( \bar{x} \)):</strong><br>
+            Egyszerű: \( \bar{x} = \frac{\sum x_i}{N} \) | Súlyozott: \( \bar{x} = \frac{\sum f_i x_i}{\sum f_i} \)
+        </div>
+        <div class="formula-box">
+            <strong>Harmonikus átlag (\( \bar{x}_h \)):</strong><br>
+            \( \bar{x}_h = \frac{N}{\sum \frac{1}{x_i}} \) (pl. átlagsebesség azonos utakon)
+        </div>
+        <div class="formula-box">
+            <strong>Mértani átlag (\( \bar{x}_g \)):</strong><br>
+            \( \bar{x}_g = \sqrt[N]{\prod x_i} \) (pl. átlagos növekedési ütem)
+        </div>
+        <div class="formula-box">
+            <strong>Négyzetes átlag (\( \bar{x}_q \)):</strong><br>
+            \( \bar{x}_q = \sqrt{\frac{\sum x_i^2}{N}} \) (szórásnál használjuk)
+        </div>
+        <p class="legend">Összefüggés: \( \bar{x}_h \leq \bar{x}_g \leq \bar{x} \leq \bar{x}_q \)</p>
+    </div>
+
+    <!-- 3. Szóródási és Alakmutatók -->
+    <div class="section">
+        <h2>3. Szóródási és Alakmutatók</h2>
+        <div class="formula-box">
+            <strong>Szórás (\( \sigma \)):</strong><br>
+            \( \sigma = \sqrt{\frac{\sum (x_i - \bar{x})^2}{N}} = \sqrt{\frac{\sum x_i^2}{N} - \bar{x}^2} \)
+        </div>
+        <div class="formula-box">
+            <strong>Relatív szórás (\( V \)):</strong> \( V = \frac{\sigma}{\bar{x}} \) (százalékban kifejezve)
+        </div>
+        <div class="formula-box">
+            <strong>Variancia:</strong> \( \sigma^2 \) (szórás négyzete)
+        </div>
+        <div class="formula-box">
+            <strong>Terjedelem (\( T \)):</strong> \( x_{max} - x_{min} \)
+        </div>
+        <div class="formula-box">
+            <strong>Interkvartilis terjedelem (\( IQR \)):</strong> \( Q_3 - Q_1 \)
+        </div>
+
+        <h3>Aszimmetria mutatók</h3>
+        <div class="formula-box">
+            <strong>A-mutató:</strong> \( A = \frac{\bar{x} - Mo}{\sigma} \) <br>
+            \( A > 0 \): balra aszimm. (jobbra nyúlt) | \( A < 0 \): jobbra aszimm. (balra nyúlt)
+        </div>
+        <div class="formula-box">
+            <strong>F-mutató:</strong> \( F = \frac{(Q_3 - Me) - (Me - Q_1)}{(Q_3 - Me) + (Me - Q_1)} \)
+        </div>
+    </div>
+
+    <!-- 4. Koncentráció és Kvantilisek -->
+    <div class="section">
+        <h2>4. Koncentráció & Kvantilisek</h2>
+        <h3>Osztópontok (Kvantilisek)</h3>
+        <ul>
+            <li>Kvartilis (\(Q\)): 4 rész (25, 50, 75%)</li>
+            <li>Kvintilis (\(K\)): 5 rész (20, 40, 60, 80%)</li>
+            <li>Decilis (\(D\)): 10 rész (10, 20, ..., 90%)</li>
+            <li>Percentilis (\(P\)): 100 rész</li>
+        </ul>
+        <div class="formula-box">
+            <strong>Kiszámítás ( \( Q_k \) ):</strong> \( Q_k = x_{i,0} + \frac{\frac{k \cdot N}{4} - f_{i-1}'}{f_i} \cdot h \)
+        </div>
+
+        <h3>Koncentráció mérése</h3>
+        <ul>
+            <li><strong>Lorenz-görbe:</strong> \( g_i' \) (kumulált relatív gyakoriság) és \( z_i' \) (kumulált relatív értékösszeg) ábrázolása.</li>
+            <li><strong>Herfindahl-index:</strong> \( HI = \sum z_i^2 \) (\( 1/K \leq HI \leq 1 \)).</li>
+            <li><strong>Koncentrációs mérőszám:</strong> \( L = 2 \cdot t_c \) (terület az átló és görbe között).</li>
+        </ul>
+    </div>
+
+    <!-- 5. Indexszámítás -->
+    <div class="section">
+        <h2>5. Indexszámítás</h2>
+        <p><i>p: ár, q: mennyiség (volumen), v = p·q: érték</i></p>
+        
+        <h3>Egyedi indexek</h3>
+        <p>\( i_p = \frac{p_1}{p_0} \); \( i_q = \frac{q_1}{q_0} \); \( i_v = \frac{v_1}{v_0} = i_p \cdot i_q \)</p>
+
+        <h3>Összetett (Aggregát) indexek</h3>
+        <table>
+            <tr>
+                <th>Típus</th>
+                <th>Laspeyres (bázis súlyú)</th>
+                <th>Paasche (tárgy súlyú)</th>
+            </tr>
+            <tr>
+                <td><strong>Árindex (\( I_p \))</strong></td>
+                <td>\( I_p^L = \frac{\sum q_0 p_1}{\sum q_0 p_0} \)</td>
+                <td>\( I_p^P = \frac{\sum q_1 p_1}{\sum q_1 p_0} \)</td>
+            </tr>
+            <tr>
+                <td><strong>Volumen (\( I_q \))</strong></td>
+                <td>\( I_q^L = \frac{\sum q_1 p_0}{\sum q_0 p_0} \)</td>
+                <td>\( I_q^P = \frac{\sum q_1 p_1}{\sum q_0 p_1} \)</td>
+            </tr>
+        </table>
+        <div class="formula-box">
+            <strong>Fisher-index:</strong> \( I^F = \sqrt{I^L \cdot I^P} \) (Geometriai átlag)
+        </div>
+        <div class="formula-box">
+            <strong>Értékindex (\( I_v \)):</strong> \( I_v = \frac{\sum q_1 p_1}{\sum q_0 p_0} = I_p^L \cdot I_q^P = I_p^P \cdot I_q^L \)
+        </div>
+        <div class="formula-box">
+            <strong>Különbség felbontás (\( K_v \)):</strong> \( K_v = \sum q_1 p_1 - \sum q_0 p_0 = K_p^L + K_q^P \)
+        </div>
+    </div>
+
+    <!-- 6. Standardizálás -->
+    <div class="section">
+        <h2>6. Standardizálás</h2>
+        <p>Főátlagok (\( \bar{V} = \frac{\sum f x}{\sum f} \)) összehasonlítása.</p>
+        <div class="formula-box">
+            <strong>Teljes eltérés (\( K \)):</strong> \( K = \bar{V}_1 - \bar{V}_0 \)
+        </div>
+        <div class="formula-box">
+            <strong>Részátlag-hatás (\( K' \)):</strong> \( K' = \frac{\sum f_1 x_1}{\sum f_1} - \frac{\sum f_1 x_0}{\sum f_1} \) (ha tárgyidőszaki az állandó súly)
+        </div>
+        <div class="formula-box">
+            <strong>Összetétel-hatás (\( K'' \)):</strong> \( K'' = \frac{\sum f_1 x_0}{\sum f_1} - \frac{\sum f_0 x_0}{\sum f_0} \)
+        </div>
+        <p>Összefüggés: \( K = K' + K'' \)</p>
+        <p><i>Hasonlóan indexekkel: \( I = I' \cdot I'' \) (Főátlagindex = Részátlagindex · Összetételindex)</i></p>
+    </div>
+
+    <!-- 7. Valószínűségszámítás -->
+    <div class="section">
+        <h2>7. Valószínűségszámítás</h2>
+        <h3>Kombinatorika</h3>
+        <ul>
+            <li><strong>Permutáció (sorrend):</strong> \( P_n = n! \) (ismétléses: \( \frac{n!}{k_1! \cdot k_2! \dots} \))</li>
+            <li><strong>Variáció (választás + sorrend):</strong> \( V_n^k = \frac{n!}{(n-k)!} \) (ismétléses: \( n^k \))</li>
+            <li><strong>Kombináció (csak választás):</strong> \( C_n^k = \binom{n}{k} = \frac{n!}{k!(n-k)!} \) (ismétléses: \( \binom{n+k-1}{k} \))</li>
+        </ul>
+
+        <h3>Alapvető tételek</h3>
+        <ul>
+            <li><strong>Klasszikus valszín:</strong> \( P(A) = \frac{\text{kedvező}}{\text{összes}} \)</li>
+            <li><strong>Feltételes valszín:</strong> \( P(A|B) = \frac{P(A \cap B)}{P(B)} \)</li>
+            <li><strong>Események függetlensége:</strong> \( P(A \cap B) = P(A) \cdot P(B) \)</li>
+            <li><strong>Bayes-tétel:</strong> \( P(B_i | A) = \frac{P(B_i) \cdot P(A | B_i)}{\sum P(B_j) \cdot P(A | B_j)} \)</li>
+        </ul>
+
+        <h3>Nevezetes eloszlások</h3>
+        <ul>
+            <li><strong>Binomiális:</strong> \( P(X=k) = \binom{n}{k} p^k (1-p)^{n-k} \). \( E(X) = np, Var(X) = np(1-p) \).</li>
+            <li><strong>Poisson:</strong> \( P(X=k) = \frac{\lambda^k}{k!} e^{-\lambda} \). \( E(X) = \lambda, Var(X) = \lambda \).</li>
+            <li><strong>Normális (\( N(\mu, \sigma) \)):</strong> Standardizálás: \( Z = \frac{X - \mu}{\sigma} \). Keresés \( \Phi(z) \) táblázatban.</li>
+        </ul>
+    </div>
+    
+    <!-- 8. Becsléselmélet -->
+    <div class="section">
+        <h2>8. Becsléselmélet</h2>
+        <div class="formula-box">
+            <strong>Standard hiba (\( s_{\bar{x}} \)):</strong> \( s_{\bar{x}} = \frac{s}{\sqrt{n}} \cdot \sqrt{1-\frac{n}{N}} \) (utóbbi a korrekciós tényező)
+        </div>
+        <div class="formula-box">
+            <strong>Konfidencia intervallum (várható értékre):</strong><br>
+            \( \bar{x} \pm z_{1-\alpha/2} \cdot \frac{\sigma}{\sqrt{n}} \) (ha \( \sigma \) ismert)<br>
+            \( \bar{x} \pm t_{n-1, 1-\alpha/2} \cdot \frac{s}{\sqrt{n}} \) (ha \( \sigma \) nem ismert)
+        </div>
+        <div class="formula-box">
+            <strong>Z-értékek:</strong> 90%: 1,645 | 95%: 1,96 | 99%: 2,576
+        </div>
+    </div>
+</div>
+
+<footer style="margin-top: 40px; text-align: center; color: #777;">
+    <p>&copy; 2026 Adatelemzés 1. Segédlet | Készítette: Gemini CLI</p>
+</footer>
+
+</body>
+</html>

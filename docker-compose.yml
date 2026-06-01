@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  web:
+    image: nginx:alpine
+    container_name: adatelemzes_puska
+    restart: unless-stopped
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.adatelemzes.rule=Host(`adatelemzes.prstart.hu`)"
+      - "traefik.http.routers.adatelemzes.entrypoints=websecure"
+      - "traefik.http.routers.adatelemzes.tls=true"
+      - "traefik.http.routers.adatelemzes.tls.certresolver=myresolver"
+      - "traefik.http.services.adatelemzes.loadbalancer.server.port=80"
+    networks:
+      - traefik
+
+networks:
+  traefik:
+    external: true
