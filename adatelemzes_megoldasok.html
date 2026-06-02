@@ -210,8 +210,20 @@
                 <div class="step"><span class="step-num">2.</span> <strong>Módusz meghatározása:</strong> <br>
                     A legnagyobb gyakoriság (41 fő) a 19 éveseknél van, tehát \( Mo = \mathbf{19 \text{ év}} \).
                 </div>
-                <div class="step"><span class="step-num">3.</span> <strong>Szórás (\(\sigma\)):</strong> <br>
-                    A variancia 1,62, amiből a szórás: \( \sigma = \sqrt{1,62} \approx \mathbf{1,27 \text{ év}} \).
+                <div class="step"><span class="step-num">3.</span> <strong>Szórás (\(\sigma\)) részletes kiszámítása:</strong> <br>
+                    A szórást a varianciából (\(\sigma^2\)) számoljuk, amelynek képlete: \( \sigma^2 = \frac{\sum f_i \cdot x_i^2}{N} - \bar{x}^2 \) <br>
+                    <div style="background: #fff; padding: 10px; margin: 5px 0; border: 1px solid #ddd; font-size: 0.9em;">
+                        \( 18^2 \cdot 3 = 972 \) <br>
+                        \( 19^2 \cdot 41 = 14801 \) <br>
+                        \( 20^2 \cdot 31 = 12400 \) <br>
+                        \( 21^2 \cdot 11 = 4851 \) <br>
+                        \( 22^2 \cdot 7 = 3388 \) <br>
+                        \( 23^2 \cdot 6 = 3174 \) <br>
+                        \( 24^2 \cdot 1 = 576 \) <br>
+                        <strong>Összesen (\(\sum f_i x_i^2\)): 40162</strong>
+                    </div>
+                    Variancia: \( \sigma^2 = \frac{40162}{100} - 20^2 = 401,62 - 400 = \mathbf{1,62} \) <br>
+                    Szórás: \( \sigma = \sqrt{1,62} \approx \mathbf{1,27 \text{ év}} \).
                 </div>
                 <div class="step"><span class="step-num">4.</span> <strong>A-mutató behelyettesítése:</strong> <br>
                     \( A = \frac{20 - 19}{1,27} = \mathbf{0,79} \).
