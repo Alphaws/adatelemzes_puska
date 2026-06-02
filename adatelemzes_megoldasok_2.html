@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adatelemzés 1. Gyakorlás - 2. Rész Megoldások</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.min.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #e67e22;
+            --bg: #fdf6e3;
+            --text: #333;
+            --card-bg: #fff;
+            --success: #27ae60;
+            --info: #2980b9;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        h1 { margin: 0; font-size: 2.2em; letter-spacing: 1px; }
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border-left: 6px solid var(--accent);
+        }
+        h2 { color: var(--primary); border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 0; }
+        .feladat { font-style: italic; color: #555; margin-bottom: 20px; background: #f9f9f9; padding: 18px; border-radius: 8px; border: 1px solid #eee; }
+        .megoldas-box { background: #e8f5e9; padding: 15px; border-radius: 8px; border-left: 4px solid var(--success); margin: 15px 0; }
+        .megoldas-label { font-weight: bold; color: var(--success); text-transform: uppercase; font-size: 0.9em; display: block; margin-bottom: 5px; }
+        .step { margin-bottom: 15px; padding-left: 10px; border-left: 2px solid #eee; }
+        .step-num { font-weight: bold; color: var(--info); margin-right: 10px; }
+        .formula-container { background: #f0f4f8; padding: 15px; border-radius: 8px; text-align: center; margin: 15px 0; border: 1px dashed var(--info); }
+        table { width: auto; margin: 20px auto; border-collapse: collapse; background: white; min-width: 300px; }
+        th, td { border: 1px solid #e0e0e0; padding: 12px; text-align: center; }
+        th { background-color: var(--secondary); color: white; }
+        footer { text-align: center; padding: 20px; color: #7f8c8d; }
+        .back-link { text-align: left; margin-bottom: 15px; }
+        .back-link a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="back-link">
+                <a href="index.html">&larr; Vissza a főoldalra</a>
+            </div>
+            <h1>Adatelemzés 1. Gyakorlás - 2. Rész</h1>
+            <p>Valószínűségszámítás és Statisztikai Becslés - Megoldások</p>
+        </header>
+
+        <!-- 1. feladat -->
+        <div class="card">
+            <h2>1. feladat: Teljes valószínűség és Bayes-tétel</h2>
+            <div class="feladat">
+                Az óvodások 69%-a csokievő. A csokievők 75%-ának, a nemevők 22%-ának rosszak a fogai. <br>
+                a) Mennyi a valószínűsége, hogy egy választott ovisnak rosszak a fogai? <br>
+                b) Ha rosszak a fogai, mennyi a valószínűsége, hogy csokievő?
+            </div>
+            <div class="magyarazat">
+                <p><strong>Események definiálása:</strong><br>
+                \(B_1\): csokievő (\(P(B_1) = 0,69\))<br>
+                \(B_2\): nem csokievő (\(P(B_2) = 1 - 0,69 = 0,31\))<br>
+                \(A\): rossz fogú</p>
+
+                <div class="step">
+                    <span class="step-num">a)</span> <strong>Teljes valószínűség tétele:</strong><br>
+                    \( P(A) = P(B_1) \cdot P(A|B_1) + P(B_2) \cdot P(A|B_2) \)<br>
+                    \( P(A) = 0,69 \cdot 0,75 + 0,31 \cdot 0,22 = 0,5175 + 0,0682 = \mathbf{0,5857 \text{ (58,57\%)}} \)
+                </div>
+
+                <div class="step">
+                    <span class="step-num">b)</span> <strong>Bayes-tétel:</strong><br>
+                    \( P(B_1|A) = \frac{P(B_1) \cdot P(A|B_1)}{P(A)} \)<br>
+                    \( P(B_1|A) = \frac{0,69 \cdot 0,75}{0,5857} = \frac{0,5175}{0,5857} \approx \mathbf{0,8836 \text{ (88,36\%)}} \)
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. feladat -->
+        <div class="card">
+            <h2>2. feladat: Normális eloszlás</h2>
+            <div class="feladat">
+                A só töltési tömege normális eloszlást követ: \(\mu = 400 \text{ g}, \sigma = 10 \text{ g}\). <br>
+                a) Több, mint 392 g valószínűsége? <br>
+                b) 385 és 415 g közé esés valószínűsége? <br>
+                c) Mekkora tömegnél nehezebb a zacskók 91%-a?
+            </div>
+            <div class="magyarazat">
+                <div class="formula-container">Standardizálás képlete: \( z = \frac{x - \mu}{\sigma} \)</div>
+                
+                <div class="step">
+                    <span class="step-num">a)</span> \( P(X > 392) = ? \)<br>
+                    \( z = \frac{392 - 400}{10} = -0,8 \)<br>
+                    \( P(Z > -0,8) = P(Z < 0,8) = \Phi(0,8) = \mathbf{0,7881 \text{ (78,81\%)}} \)
+                </div>
+
+                <div class="step">
+                    <span class="step-num">b)</span> \( P(385 < X < 415) = ? \)<br>
+                    \( z_1 = \frac{385 - 400}{10} = -1,5; \quad z_2 = \frac{415 - 400}{10} = 1,5 \)<br>
+                    \( P(-1,5 < Z < 1,5) = \Phi(1,5) - \Phi(-1,5) = 2 \cdot \Phi(1,5) - 1 = 2 \cdot 0,9332 - 1 = \mathbf{0,8664 \text{ (86,64\%)}} \)
+                </div>
+
+                <div class="step">
+                    <span class="step-num">c)</span> <strong>Inverz feladat:</strong> \( P(X > x) = 0,91 \)<br>
+                    Ez azt jelenti, hogy \( P(X < x) = 0,09 \). Mivel 0,5 alatti, a \( z \) érték negatív lesz.<br>
+                    A táblázatban a \( 1 - 0,09 = 0,91 \)-hez tartozó értéket keressük: \( \Phi(1,34) \approx 0,91 \).<br>
+                    Tehát \( z = -1,34 \).<br>
+                    \( -1,34 = \frac{x - 400}{10} \implies x = 400 - 13,4 = \mathbf{386,6 \text{ g}} \)
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. feladat -->
+        <div class="card">
+            <h2>3. feladat: Konfidencia intervallumok</h2>
+            <div class="feladat">
+                \( N=1500, n=110 \). Életkor megoszlás a táblázatban. <br>
+                a) 97%-os konfidencia intervallum az átlagéletkorra. <br>
+                b) 95%-os konfidencia intervallum a 40 évnél fiatalabbak arányára.
+            </div>
+
+            <table>
+                <thead>
+                    <tr><th>Életkor</th><th>f_i (db)</th><th>Osztályközép (x_i)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>20 - 29</td><td>12</td><td>24,5</td></tr>
+                    <tr><td>30 - 39</td><td>30</td><td>34,5</td></tr>
+                    <tr><td>40 - 49</td><td>41</td><td>44,5</td></tr>
+                    <tr><td>50 - 59</td><td>22</td><td>54,5</td></tr>
+                    <tr><td>60 - 69</td><td>5</td><td>64,5</td></tr>
+                    <tr style="font-weight:bold;"><td>Összesen</td><td>110</td><td>-</td></tr>
+                </tbody>
+            </table>
+
+            <div class="magyarazat">
+                <div class="step">
+                    <span class="step-num">a)</span> <strong>Átlag becslése:</strong><br>
+                    Mintaátlag: \( \bar{x} \approx 43 \text{ év} \). Mintaszórás: \( s = 10,3 \text{ év} \).<br>
+                    Finit korrekcióval számolt standard hiba:<br>
+                    \( s_{\bar{x}} = \frac{s}{\sqrt{n}} \cdot \sqrt{\frac{N-n}{N-1}} = \frac{10,3}{\sqrt{110}} \cdot \sqrt{\frac{1500-110}{1500-1} } \approx 0,946 \)<br>
+                    97%-hoz tartozó \( z \) érték (\( \alpha/2 = 0,015 \)): \( z_{0,985} = 2,17 \).<br>
+                    Hiba: \( \Delta = 2,17 \cdot 0,946 = 2,05 \).<br>
+                    Intervallum: \( [43 - 2,05; 43 + 2,05] = \mathbf{[40,95; 45,05] \text{ év}} \)
+                </div>
+
+                <div class="step">
+                    <span class="step-num">b)</span> <strong>Arány becslése (40 év alatt):</strong><br>
+                    40 év alattiak száma: \( 12 + 30 = 42 \). Mintaarány: \( p = 42/110 = 0,3818 \).<br>
+                    Standard hiba arányra:<br>
+                    \( s_p = \sqrt{\frac{p(1-p)}{n}} \cdot \sqrt{\frac{N-n}{N-1}} = \sqrt{\frac{0,38 \cdot 0,62}{110}} \cdot 0,963 \approx 0,0446 \)<br>
+                    95%-hoz tartozó \( z \): 1,96. Hiba: \( \Delta = 1,96 \cdot 0,0446 = 0,0874 \).<br>
+                    Intervallum: \( [0,38 - 0,0874; 0,38 + 0,0874] = \mathbf{[0,2926; 0,4674] \text{ (29,3\% - 46,7\%)}} \)
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 - Adatelemzés 1. Segédlet | Készítette: Gemini CLI</p>
+        </footer>
+    </div>
+</body>
+</html>
