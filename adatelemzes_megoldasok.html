@@ -239,18 +239,53 @@
         <div class="card">
             <h2>4. feladat: Osztályközös statisztika</h2>
             <div class="feladat">
-                Számítsa ki és értelmezze a dolgozók utazási idejének átlagát, móduszát és mediánját!
+                Egy vállalat dolgozóinak munkahelyre való utazási idő szerinti megoszlása. Készítsen hisztogramot, számítsa ki az átlagot, móduszt, mediánt és a 9. decilist!
             </div>
+
+            <table style="width: auto; margin: 20px auto; min-width: 300px;">
+                <thead>
+                    <tr>
+                        <th>Utazási idő (perc)</th>
+                        <th>Dolgozók száma (fő) - \(f_i\)</th>
+                        <th>Kumulált gyakoriság - \(f_i'\)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>0 – 9</td><td>20</td><td>20</td></tr>
+                    <tr><td>10 – 19</td><td>30</td><td>50</td></tr>
+                    <tr><td>20 – 29</td><td>40</td><td>90</td></tr>
+                    <tr><td>30 – 39</td><td>50</td><td>140</td></tr>
+                    <tr><td>40 – 49</td><td>10</td><td>150</td></tr>
+                    <tr style="font-weight: bold; background: #eee;"><td>Összesen</td><td>150</td><td>-</td></tr>
+                </tbody>
+            </table>
+
             <div class="magyarazat">
-                <p><strong>Átlag (\(\bar{x}\)):</strong> Az osztályközök közepeivel (5, 15, 25, 35, 45) számolva: <strong>25 perc</strong>.</p>
-                <p><strong>Módusz (\(Mo\)):</strong> A móduszi osztályköz a 30-39 (itt van a legtöbb dolgozó: 50 fő).<br>
-                    \( Mo = 30 + \frac{50-40}{(50-40) + (50-10)} \cdot 10 = 30 + \frac{10}{50} \cdot 10 = \mathbf{32 \text{ perc}} \)
-                </p>
-                <p><strong>Medián (\(Me\)):</strong> A 150 fő fele a 75. dolgozó. Ő a 20-29 osztályközben található.<br>
-                    \( Me = 20 + \frac{75 - 50}{40} \cdot 10 = 20 + \frac{25}{40} \cdot 10 = \mathbf{26,25 \text{ perc}} \)
-                </p>
-                <p><strong>9. Decilis (\(D_9\)):</strong> A dolgozók 90%-ának (135 fő) utazási ideje legfeljebb ennyi.<br>
-                    \( D_9 = 30 + \frac{135 - 90}{50} \cdot 10 = \mathbf{39 \text{ perc}} \)
+                <p><strong>a) Hisztogram készítése:</strong><br>
+                A hisztogramnál a vízszintes tengelyre az osztályközöket (idő), a függőlegesre a gyakoriságot (fő) mérjük fel. Mivel az osztályközök hossza azonos (10 perc), a téglalapok magassága közvetlenül arányos a dolgozók számával. A legmagasabb oszlop a 30-39 perces sáv lesz.</p>
+
+                <p><strong>b) Középértékek számítása:</strong></p>
+                <ul>
+                    <li><strong>Átlag (\(\bar{x}\)):</strong> Az osztályközök közepeivel (4.5, 14.5, 24.5, 34.5, 44.5) számolva:<br>
+                        \( \bar{x} = \frac{4.5 \cdot 20 + 14.5 \cdot 30 + 24.5 \cdot 40 + 34.5 \cdot 50 + 44.5 \cdot 10}{150} = \frac{3675}{150} = \mathbf{24,5 \text{ perc}} \)
+                        *(A kerekített 25 perc is elfogadható a vizsgán, ha 5, 15... értékekkel számolsz).*
+                    </li>
+                    <li><strong>Módusz (\(Mo\)):</strong> A leggyakoribb osztályköz a 30-39 (\(f_i=50\)).<br>
+                        \( Mo = x_{i,0} + \frac{f_i - f_{i-1}}{(f_i - f_{i-1}) + (f_i - f_{i+1})} \cdot h = 30 + \frac{50-40}{(50-40) + (50-10)} \cdot 10 = \mathbf{32 \text{ perc}} \)
+                    </li>
+                    <li><strong>Medián (\(Me\)):</strong> Az 50%-os határ a 75. dolgozó (\(150/2=75\)). Ő a 20-29 sávba esik (mivel előtte 50-en vannak, ebben a sávban pedig a 90. főig jutunk).<br>
+                        \( Me = x_{i,0} + \frac{N/2 - f_{i-1}'}{f_i} \cdot h = 20 + \frac{75 - 50}{40} \cdot 10 = 20 + 6,25 = \mathbf{26,25 \text{ perc}} \)
+                    </li>
+                </ul>
+
+                <p><strong>c) 9. Decilis (\(D_9\)) kiszámítása:</strong><br>
+                A 9. decilis az az érték, amelynél a dolgozók 90%-a kevesebbet utazik. <br>
+                Rangszám: \( \frac{9 \cdot N}{10} = \frac{9 \cdot 150}{10} = \mathbf{135} \). <br>
+                A 135. dolgozó a 30-39 perces osztályközbe esik (a kumulált gyakoriság itt 140).
+                <div class="formula-container" style="background: #fff; border: 1px solid var(--accent); display: inline-block; padding: 10px 20px;">
+                    \( D_9 = x_{i,0} + \frac{135 - f_{i-1}'}{f_i} \cdot h = 30 + \frac{135 - 90}{50} \cdot 10 = 30 + 9 = \mathbf{39 \text{ perc}} \)
+                </div>
+                <br><strong>Értelmezés:</strong> A dolgozók 90%-a legfeljebb 39 percet utazik a munkahelyére.
                 </p>
             </div>
         </div>
