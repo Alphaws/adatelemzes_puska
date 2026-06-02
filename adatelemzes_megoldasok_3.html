@@ -236,12 +236,36 @@
         <div class="card" style="border-left-color: #f1c40f;">
             <h2>Szorgalmi feladat</h2>
             <div class="feladat">
-                Tárgyidőszaki súlyozású ár- és volumenindexek.
+                Tárgyidőszaki súlyozású együttes ár- és volumenindexek kiszámítása és értelmezése.
             </div>
+
+            <table style="width: auto; margin: 20px auto;">
+                <thead>
+                    <tr>
+                        <th>Termék</th>
+                        <th>2015. évi termelési érték (\(v_0\))</th>
+                        <th>2016. évi termelési érték (\(v_1\))</th>
+                        <th>Egyedi árindex (\(i_p\))</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>A</td><td>156 MFt</td><td>185 MFt</td><td>98% (0,98)</td></tr>
+                    <tr><td>B</td><td>145 MFt</td><td>173 MFt</td><td>105% (1,05)</td></tr>
+                    <tr style="font-weight: bold; background: #eee;"><td>Összesen</td><td>301 MFt</td><td>358 MFt</td><td>-</td></tr>
+                </tbody>
+            </table>
+
             <div class="magyarazat">
-                Adatok: A (\(v_0=156, v_1=185, i_p=0,98\)), B (\(v_0=145, v_1=173, i_p=1,05\))<br>
-                \( I_p^P = \frac{185 + 173}{185/0,98 + 173/1,05} = \frac{358}{188,78 + 164,76} = \frac{358}{353,54} = \mathbf{1,0126 \text{ (101,26\%)}} \)<br>
-                \( I_q^P = \frac{\sum v_1}{\sum v_0 \cdot i_p} = \frac{358}{156 \cdot 0,98 + 145 \cdot 1,05} = \frac{358}{152,88 + 152,25} = \frac{358}{305,13} = \mathbf{1,1733 \text{ (117,33\%)}} \)
+                <div class="step">
+                    <strong>1. Paasche árindex (\(I_p^P\)):</strong><br>
+                    \( I_p^P = \frac{\sum v_1}{\sum \frac{v_1}{i_p}} = \frac{185 + 173}{185/0,98 + 173/1,05} = \frac{358}{188,78 + 164,76} = \frac{358}{353,54} = \mathbf{1,0126 \text{ (101,26\%)}} \)<br>
+                    <em>Értelmezés:</em> Az árak átlagosan 1,26%-kal nőttek.
+                </div>
+                <div class="step">
+                    <strong>2. Paasche volumenindex (\(I_q^P\)):</strong><br>
+                    \( I_q^P = \frac{\sum v_1}{\sum v_0 \cdot i_p} = \frac{358}{156 \cdot 0,98 + 145 \cdot 1,05} = \frac{358}{152,88 + 152,25} = \frac{358}{305,13} = \mathbf{1,1733 \text{ (117,33\%)}} \)<br>
+                    <em>Értelmezés:</em> A termelés volumene átlagosan 17,33%-kal emelkedett.
+                </div>
             </div>
         </div>
 
