@@ -294,16 +294,51 @@
         <div class="card">
             <h2>5. feladat: Indexszámítás alapok</h2>
             <div class="feladat">
-                Jellemezze a termékek árváltozását Laspeyres és Paasche árindexekkel!
+                Egy cég termelési és értékesítési adatai 2015-ben és 2016-ban. Jellemezze a változásokat egyedi indexekkel és összetett árindexekkel!
             </div>
+
+            <table style="width: auto; margin: 20px auto;">
+                <thead>
+                    <tr>
+                        <th rowspan="2">Termék</th>
+                        <th colspan="2">Termelés mennyisége (\(q\))</th>
+                        <th colspan="2">Értékesítési ár (\(p\))</th>
+                    </tr>
+                    <tr>
+                        <th>2015 (\(q_0\))</th>
+                        <th>2016 (\(q_1\))</th>
+                        <th>2015 (\(p_0\))</th>
+                        <th>2016 (\(p_1\))</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>A</td><td>36</td><td>11</td><td>400</td><td>650</td></tr>
+                    <tr><td>B</td><td>24</td><td>36</td><td>200</td><td>250</td></tr>
+                </tbody>
+            </table>
+
             <div class="magyarazat">
+                <p><strong>a) Egyedi indexek számítása:</strong><br>
+                Az egyedi index megmutatja egyetlen termék változását a két időszak között.</p>
+                <ul>
+                    <li><strong>A termék mennyiségi változása (\(i_q\)):</strong> <br>
+                        \( i_q = \frac{q_1}{q_0} = \frac{11}{36} = \mathbf{0,3056 \text{ (30,56\%)}} \) <br>
+                        <em>Értelmezés:</em> Az A termék termelése az előző évinek kb. 30,6%-ára esett vissza (69,44%-os csökkenés).
+                    </li>
+                    <li><strong>B termék árváltozása (\(i_p\)):</strong> <br>
+                        \( i_p = \frac{p_1}{p_0} = \frac{250}{200} = \mathbf{1,25 \text{ (125\%)}} \) <br>
+                        <em>Értelmezés:</em> A B termék ára 25%-kal növekedett.
+                    </li>
+                </ul>
+
+                <p><strong>b) Összetett árindexek:</strong></p>
                 <div class="step"><strong>Laspeyres árindex (\(I_p^L\)):</strong> Bázisidőszaki súlyozású.<br>
                     \( I_p^L = \frac{\sum p_1 q_0}{\sum p_0 q_0} = \frac{650 \cdot 36 + 250 \cdot 24}{400 \cdot 36 + 200 \cdot 24} = \frac{29400}{19200} = \mathbf{1,5313 \text{ (153,13\%)}} \)
                 </div>
                 <div class="step"><strong>Paasche árindex (\(I_p^P\)):</strong> Tárgyidőszaki súlyozású.<br>
                     \( I_p^P = \frac{\sum p_1 q_1}{\sum p_0 q_1} = \frac{650 \cdot 11 + 250 \cdot 36}{400 \cdot 11 + 200 \cdot 36} = \frac{16150}{11600} = \mathbf{1,3922 \text{ (139,22\%)}} \)
                 </div>
-                <p><strong>Értelmezés:</strong> Az árak átlagosan 53,1%-kal (Laspeyres) vagy 39,2%-kal (Paasche) nőttek. Az eltérést az magyarázza, hogy a termelési arányok (súlyok) jelentősen eltolódtak 2015-ről 2016-ra.</p>
+                <p><strong>Eltérés magyarázata:</strong> A két index közötti különbség oka a termelési szerkezet változása. Laspeyres a régi (2015-ös), Paasche az új (2016-os) mennyiségeket tekinti súlynak. Mivel az A termék (aminél nagyobb volt az áremelés) mennyisége drasztikusan lecsökkent, a tárgyidőszaki súlyozású Paasche index kisebb áremelkedést mutat.</p>
             </div>
         </div>
 
