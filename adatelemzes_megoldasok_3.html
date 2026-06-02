@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adatelemzés 1. Gyakorlás - 3. Rész (2025.05.20 Vizsga)</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.min.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #8e44ad;
+            --bg: #f0f2f5;
+            --text: #333;
+            --card-bg: #fff;
+            --success: #27ae60;
+            --info: #2980b9;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            color: white;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        h1 { margin: 0; font-size: 2em; letter-spacing: 1px; }
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border-left: 6px solid var(--accent);
+        }
+        h2 { color: var(--primary); border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 0; }
+        .feladat { font-style: italic; color: #555; margin-bottom: 20px; background: #f9f9f9; padding: 18px; border-radius: 8px; border: 1px solid #eee; }
+        .megoldas-box { background: #e8f5e9; padding: 15px; border-radius: 8px; border-left: 4px solid var(--success); margin: 15px 0; }
+        .step { margin-bottom: 15px; padding-left: 10px; border-left: 2px solid #eee; }
+        .step-num { font-weight: bold; color: var(--info); margin-right: 10px; }
+        .formula-container { background: #f0f4f8; padding: 15px; border-radius: 8px; text-align: center; margin: 15px 0; border: 1px dashed var(--info); overflow-x: auto; }
+        table { width: auto; margin: 20px auto; border-collapse: collapse; background: white; min-width: 350px; }
+        th, td { border: 1px solid #e0e0e0; padding: 10px; text-align: center; }
+        th { background-color: var(--secondary); color: white; }
+        footer { text-align: center; padding: 20px; color: #7f8c8d; }
+        .back-link { text-align: left; margin-bottom: 15px; }
+        .back-link a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9em; }
+        .theoretical-list { list-style-type: none; padding-left: 0; }
+        .theoretical-list li { margin-bottom: 15px; padding: 10px; background: #fffaf0; border-radius: 5px; border-left: 3px solid #f39c12; }
+        .theoretical-list b { color: #d35400; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="back-link">
+                <a href="index.html">&larr; Vissza a főoldalra</a>
+            </div>
+            <h1>Adatelemzés 1. Vizsgasor</h1>
+            <p>2025.05.20 - Teljes kidolgozott megoldás</p>
+        </header>
+
+        <!-- 1. feladat -->
+        <div class="card">
+            <h2>1. feladat: Javítási idők elemzése</h2>
+            <div class="feladat">
+                Egy egyetemen 80 hibajavítás idejét mérték fel. Számítsa ki a móduszt, átlagot, szórást, A-mutatót, terjedelmet és relatív szórást!
+            </div>
+            <table>
+                <thead>
+                    <tr><th>Javítási idő (perc)</th><th>Esetek száma (\(f_i\))</th><th>Osztályközép (\(x_i\))</th><th>\(f_i \cdot x_i\)</th><th>\(f_i \cdot x_i^2\)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>10 – 19</td><td>15</td><td>14,5</td><td>217,5</td><td>3153,75</td></tr>
+                    <tr><td>20 – 29</td><td>28</td><td>24,5</td><td>686</td><td>16807</td></tr>
+                    <tr><td>30 – 39</td><td>18</td><td>34,5</td><td>621</td><td>21424,5</td></tr>
+                    <tr><td>40 – 49</td><td>12</td><td>44,5</td><td>534</td><td>23763</td></tr>
+                    <tr><td>50 – 59</td><td>7</td><td>54,5</td><td>381,5</td><td>20791,75</td></tr>
+                    <tr style="font-weight:bold;"><td>Összesen</td><td>80</td><td>-</td><td>2440</td><td>85940</td></tr>
+                </tbody>
+            </table>
+
+            <div class="magyarazat">
+                <div class="step"><span class="step-num">a)</span> <strong>Átlag, Módusz, Szórás:</strong><br>
+                    Átlag: \( \bar{x} = 2440 / 80 = \mathbf{30,5 \text{ perc}} \)<br>
+                    Módusz (20-29 osztályköz): \( Mo = 20 + \frac{28-15}{(28-15)+(28-18)} \cdot 10 = 20 + \frac{13}{23} \cdot 10 = \mathbf{25,65 \text{ perc}} \)<br>
+                    Variancia: \( \sigma^2 = \frac{85940}{80} - 30,5^2 = 1074,25 - 930,25 = 144 \)<br>
+                    Szórás: \( \sigma = \sqrt{144} = \mathbf{12 \text{ perc}} \)
+                </div>
+                <div class="step"><span class="step-num">b)</span> <strong>Aszimmetria (A-mutató):</strong><br>
+                    \( A = \frac{30,5 - 25,65}{12} = \mathbf{0,404} \) (Jobbra aszimmetrikus eloszlás).
+                </div>
+                <div class="step"><span class="step-num">c)</span> <strong>Terjedelem és Relatív szórás:</strong><br>
+                    Terjedelem: \( 60 - 10 = \mathbf{50 \text{ perc}} \)<br>
+                    Relatív szórás: \( V = \frac{12}{30,5} = \mathbf{0,3934 \text{ (39,34\%)}} \)
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. feladat -->
+        <div class="card">
+            <h2>2. feladat: Termékek indexszámítása</h2>
+            <div class="feladat">
+                Két termék (X, Y) értékesítési adatai 2022-2023-ban. Számítsa ki az árindexeket, volumenindexeket és a forgalomváltozás összetevőit!
+            </div>
+            <table>
+                <thead>
+                    <tr><th>Termék</th><th>\(q_0\)</th><th>\(q_1\)</th><th>\(p_0\)</th><th>\(p_1\)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>X</td><td>45</td><td>54</td><td>28</td><td>24</td></tr>
+                    <tr><td>Y</td><td>28</td><td>33</td><td>30</td><td>33</td></tr>
+                </tbody>
+            </table>
+            <div class="magyarazat">
+                <div class="step"><span class="step-num">a)</span> <strong>Egyedi árindexek:</strong><br>
+                    \( i_{p,X} = 24/28 = \mathbf{0,8571 \text{ (-14,3\%)}} \); \( i_{p,Y} = 33/30 = \mathbf{1,1 \text{ (+10\%)}} \)
+                </div>
+                <div class="step"><span class="step-num">b)</span> <strong>Összetett volumenindexek:</strong><br>
+                    Laspeyres: \( I_q^L = \frac{54 \cdot 28 + 33 \cdot 30}{45 \cdot 28 + 28 \cdot 30} = \frac{2502}{2100} = \mathbf{1,1914 \text{ (119,1\%)}} \)<br>
+                    Paasche: \( I_q^P = \frac{54 \cdot 24 + 33 \cdot 33}{45 \cdot 24 + 28 \cdot 33} = \frac{2385}{2004} = \mathbf{1,1901 \text{ (119\%)}} \)
+                </div>
+                <div class="step"><span class="step-num">c)</span> <strong>Forgalomváltozás felbontása (\( \Delta V = \Delta V_q + \Delta V_p \)):</strong><br>
+                    Teljes változás: \( 2385 - 2100 = \mathbf{285 \text{ ezer Ft}} \)<br>
+                    Volumenhatás (\( \Delta V_q = \sum q_1 p_0 - \sum q_0 p_0 \)): \( 2502 - 2100 = \mathbf{+402 \text{ ezer Ft}} \)<br>
+                    Árhatás (\( \Delta V_p = \sum q_1 p_1 - \sum q_1 p_0 \)): \( 2385 - 2502 = \mathbf{-117 \text{ ezer Ft}} \)<br>
+                    Ellenőrzés: \( 402 + (-117) = 285 \).
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. feladat -->
+        <div class="card">
+            <h2>3. feladat: Kombinatórika / Valószínűség</h2>
+            <div class="feladat">
+                32 alkalmazott, 8-nak nincs nyelvvizsgája. 6 főt delegálnak véletlenszerűen. Mennyi a valószínűsége, hogy minden delegáltnak van nyelvvizsgája?
+            </div>
+            <div class="magyarazat">
+                <p>Hipergeometrikus eloszlásról van szó, mivel visszatevés nélkül választunk.</p>
+                <div class="formula-container">
+                    \( P(X=0) = \frac{\binom{K}{k} \cdot \binom{N-K}{n-k}}{\binom{N}{n}} = \frac{\binom{24}{6} \cdot \binom{8}{0}}{\binom{32}{6}} \)
+                </div>
+                <p>
+                    \( \binom{24}{6} = 134\,596 \)<br>
+                    \( \binom{32}{6} = 906\,192 \)<br>
+                    \( P = 134596 / 906192 = \mathbf{0,1485 \text{ (14,85\%)}} \)
+                </p>
+            </div>
+        </div>
+
+        <!-- 4. feladat -->
+        <div class="card">
+            <h2>4. feladat: Normális eloszlás (Dinnyék)</h2>
+            <div class="feladat">
+                Átlagos tömeg: \(\mu = 9,75 \text{ kg}\), szórás: \(\sigma = 1,5 \text{ kg}\).
+            </div>
+            <div class="magyarazat">
+                <div class="step"><span class="step-num">a)</span> \( P(X < 8,1) = ? \)<br>
+                    \( z = \frac{8,1 - 9,75}{1,5} = -1,1 \)<br>
+                    \( P(Z < -1,1) = 1 - \Phi(1,1) = 1 - 0,8643 = \mathbf{0,1357 \text{ (13,57\%)}} \)
+                </div>
+                <div class="step"><span class="step-num">b)</span> \( P(7,65 < X < 11,85) = ? \)<br>
+                    \( z_1 = \frac{7,65 - 9,75}{1,5} = -1,4 \); \( z_2 = \frac{11,85 - 9,75}{1,5} = 1,4 \)<br>
+                    \( P = 2 \cdot \Phi(1,4) - 1 = 2 \cdot 0,9192 - 1 = \mathbf{0,8384 \text{ (83,84\%)}} \)
+                </div>
+                <div class="step"><span class="step-num">c)</span> Dinnyék 5%-a könnyebb ennél a tömegnél:<br>
+                    \( P(Z < z) = 0,05 \implies \Phi(-z) = 0,95 \implies -z = 1,645 \implies z = -1,645 \)<br>
+                    \( -1,645 = \frac{x - 9,75}{1,5} \implies x = 9,75 - 1,645 \cdot 1,5 = \mathbf{7,28 \text{ kg}} \)
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. feladat -->
+        <div class="card">
+            <h2>5. feladat: Konfidencia intervallum (Életkor)</h2>
+            <div class="feladat">
+                \( N=1800, n=160 \). Számítson 98%-os CI-t a 20 évnél idősebbek arányára, és 96%-ost a számukra!
+            </div>
+            <div class="magyarazat">
+                <p>20 évnél idősebbek száma a mintában: \( 33+29+19+10+3 = 94 \). <br>
+                   Mintaarány: \( p = 94/160 = \mathbf{0,5875} \).</p>
+                <div class="step"><span class="step-num">a)</span> <strong>98%-os CI az arányra:</strong><br>
+                    \( z_{0,99} = 2,33 \). Standard hiba (finit korrekcióval):<br>
+                    \( s_p = \sqrt{\frac{0,5875 \cdot 0,4125}{160}} \cdot \sqrt{\frac{1800-160}{1799}} = 0,0389 \cdot 0,955 = 0,0371 \)<br>
+                    Hiba: \( 2,33 \cdot 0,0371 = 0,0864 \).<br>
+                    Intervallum: \( [0,5875 - 0,0864; 0,5875 + 0,0864] = \mathbf{[50,11\%; 67,39\%]} \)
+                </div>
+                <div class="step"><span class="step-num">b)</span> <strong>96%-os CI a létszámra:</strong><br>
+                    \( z_{0,98} = 2,05 \). Hiba az arányra ennél a szintnél: \( 2,05 \cdot 0,0371 = 0,076 \).<br>
+                    Létszám becslése: \( N \cdot p \pm N \cdot \Delta_p \)<br>
+                    \( 1800 \cdot 0,5875 \pm 1800 \cdot 0,076 = 1057,5 \pm 136,8 \)<br>
+                    Intervallum: \( \mathbf{[921; 1194] \text{ fő}} \)
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. feladat -->
+        <div class="card">
+            <h2>6. feladat: Elméleti kérdések</h2>
+            <ul class="theoretical-list">
+                <li><b>Ismérvek és Skálák:</b>
+                    <ul>
+                        <li>Rendfokozat: Minőségi, Sorrendi (Ordinális)</li>
+                        <li>Bruttó bér: Mennyiségi, Arány skála</li>
+                        <li>Születés évszáma: Mennyiségi, Különbségi (Intervallum)</li>
+                        <li>Irányítószám: Minőségi, Névleges (Nominális)</li>
+                    </ul>
+                </li>
+                <li><b>Ellentett esemény (\( \bar{A} \)):</b> Az az esemény, amely pontosan akkor következik be, ha \( A \) nem. Valószínűsége: \( P(\bar{A}) = 1 - P(A) \).</li>
+                <li><b>Standard hiba:</b> A becslőfüggvény (pl. mintaátlag) eloszlásának szórása. Azt mutatja meg, hogy a mintából számított érték átlagosan mennyire tér el a valódi sokasági értéktől.</li>
+                <li><b>Fogyasztói árindex (1,036):</b> A vizsgált időszakban a fogyasztói árak átlagosan 3,6%-kal emelkedtek a bázisidőszakhoz képest.</li>
+            </ul>
+        </div>
+
+        <!-- Szorgalmi -->
+        <div class="card" style="border-left-color: #f1c40f;">
+            <h2>Szorgalmi feladat</h2>
+            <div class="feladat">
+                Tárgyidőszaki súlyozású ár- és volumenindexek.
+            </div>
+            <div class="magyarazat">
+                Adatok: A (\(v_0=156, v_1=185, i_p=0,98\)), B (\(v_0=145, v_1=173, i_p=1,05\))<br>
+                \( I_p^P = \frac{185 + 173}{185/0,98 + 173/1,05} = \frac{358}{188,78 + 164,76} = \frac{358}{353,54} = \mathbf{1,0126 \text{ (101,26\%)}} \)<br>
+                \( I_q^P = \frac{\sum v_1}{\sum v_0 \cdot i_p} = \frac{358}{156 \cdot 0,98 + 145 \cdot 1,05} = \frac{358}{152,88 + 152,25} = \frac{358}{305,13} = \mathbf{1,1733 \text{ (117,33\%)}} \)
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 - Adatelemzés 1. Segédlet | Készítette: Gemini CLI</p>
+        </footer>
+    </div>
+</body>
+</html>
