@@ -6,7 +6,7 @@ services:
     container_name: adatelemzes_puska
     restart: unless-stopped
     volumes:
-      - ./index.html:/usr/share/nginx/html/index.html:ro
+      - ./:/usr/share/nginx/html:ro
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.adatelemzes.rule=Host(`adatelemzes.prstart.hu`)"
