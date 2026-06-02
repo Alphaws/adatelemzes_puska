@@ -344,18 +344,60 @@
 
         <!-- 6. feladat -->
         <div class="card">
-            <h2>6. feladat: Összetett indexek</h2>
+            <h2>6. feladat: Összetett indexek (Érték, Ár, Volumen)</h2>
             <div class="feladat">
-                Határozza meg az értékindexet és a tárgyidőszaki volumenindexet!
+                Egy cég két terméket értékesít. Határozza meg és értelmezze a két termékre együttesen az értékindexet, valamint a tárgyidőszaki súlyozású ár- és volumen indexet!
             </div>
+
+            <table style="width: auto; margin: 20px auto;">
+                <thead>
+                    <tr>
+                        <th rowspan="2">Termék</th>
+                        <th rowspan="2">Egyedi árindex (\(i_p\))</th>
+                        <th colspan="2">Folyóáras eladási érték (\(v = p \cdot q\))</th>
+                    </tr>
+                    <tr>
+                        <th>2017 (\(v_0\))</th>
+                        <th>2018 (\(v_1\))</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>A</td><td>115% (1,15)</td><td>56 millió Ft</td><td>65 millió Ft</td></tr>
+                    <tr><td>B</td><td>98% (0,98)</td><td>80 millió Ft</td><td>88 millió Ft</td></tr>
+                    <tr style="font-weight: bold; background: #eee;"><td>Összesen</td><td>-</td><td>136</td><td>153</td></tr>
+                </tbody>
+            </table>
+
             <div class="magyarazat">
-                <p><strong>Értékindex (\(I_v\)):</strong> Megmutatja az eladási érték teljes változását.<br>
+                <p><strong>a) Értékindex (\(I_v\)) meghatározása:</strong><br>
+                Az értékindex a teljes árbevétel változását mutatja meg.</p>
+                <div class="formula-container" style="background: #fff; border: 1px solid var(--accent); display: inline-block; padding: 10px 20px;">
                     \( I_v = \frac{\sum v_1}{\sum v_0} = \frac{153}{136} = \mathbf{1,125 \text{ (112,5\%)}} \)
+                </div>
+                <p><em>Értelmezés:</em> A cég teljes árbevétele 12,5%-kal növekedett 2017-ről 2018-ra.</p>
+
+                <p><strong>b) Tárgyidőszaki súlyozású indexek:</strong></p>
+
+                <div class="step">
+                    <strong>1. Paasche árindex (\(I_p^P\)):</strong><br>
+                    Mivel rendelkezünk a tárgyidőszaki értékekkel (\(v_1\)) és az egyedi árindexekkel (\(i_p\)), a harmonikus formát használjuk:<br>
+                    \( I_p^P = \frac{\sum v_1}{\sum \frac{v_1}{i_p}} = \frac{153}{\frac{65}{1,15} + \frac{88}{0,98}} = \frac{153}{56,52 + 89,80} = \frac{153}{146,32} = \mathbf{1,0457 \text{ (104,57\%)}} \)
+                    <br><em>Értelmezés:</em> Az árak átlagosan 4,57%-kal nőttek.
+                </div>
+
+                <div class="step">
+                    <strong>2. Paasche volumenindex (\(I_q^P\)):</strong><br>
+                    A Paasche volumenindex a tárgyidőszaki árakat használja súlyként: \( I_q^P = \frac{\sum q_1 p_1}{\sum q_0 p_1} \). <br>
+                    A nevezőt (\(\sum q_0 p_1\)) úgy kapjuk meg, hogy a bázisértékeket megszorozzuk az egyedi árindexekkel:<br>
+                    \( \sum q_0 p_1 = \sum (q_0 p_0) \cdot i_p = 56 \cdot 1,15 + 80 \cdot 0,98 = 64,4 + 78,4 = \mathbf{142,8} \) <br>
+                    \( I_q^P = \frac{153}{142,8} = \mathbf{1,0714 \text{ (107,14\%)}} \)
+                    <br><em>Értelmezés:</em> Az értékesített mennyiség (volumen) átlagosan 7,14%-kal nőtt.
+                </div>
+
+                <p style="margin-top: 15px; border-top: 1px solid #eee; padding-top: 10px;">
+                    <strong>Ellenőrzés:</strong> \( I_v = I_q^L \cdot I_p^P \) vagy \( I_v = I_q^P \cdot I_p^L \). <br>
+                    Jelen esetben: \( 1,0714 \cdot I_p^L = 1,125 \), amiből a bázissúlyozású árindex is visszaszámolható lenne.
                 </p>
-                <p><strong>Paasche volumenindex (\(I_q^P\)):</strong><br>
-                    \( I_q^P = \frac{\sum p_1 q_1}{\sum p_1 q_0} = \frac{153}{1,15 \cdot 56 + 0,98 \cdot 80} = \frac{153}{142,8} = \mathbf{1,0714 \text{ (107,14\%)}} \)
-                </p>
-                <p><strong>Értelmezés:</strong> Miközben az eladási érték 12,5%-kal nőtt, a termelés volumene (mennyisége) átlagosan 7,14%-os növekedést mutatott.</p>
             </div>
         </div>
 
