@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adatelemzés 1. Gyakorlás - Megoldások</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.min.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #3498db;
+            --bg: #f4f7f6;
+            --text: #333;
+            --card-bg: #fff;
+            --success: #27ae60;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        h1 { margin: 0; font-size: 2.5em; letter-spacing: 1px; }
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border-left: 6px solid var(--accent);
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+        }
+        h2 { color: var(--primary); border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 0; }
+        .feladat { font-style: italic; color: #555; margin-bottom: 20px; background: #fcfcfc; padding: 18px; border-radius: 8px; border: 1px solid #eee; }
+        .megoldas-box { background: #e8f5e9; padding: 15px; border-radius: 8px; border-left: 4px solid var(--success); margin: 15px 0; }
+        .megoldas-label { font-weight: bold; color: var(--success); text-transform: uppercase; font-size: 0.9em; display: block; margin-bottom: 5px; }
+        .magyarazat { margin-top: 15px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: white; }
+        th, td { border: 1px solid #e0e0e0; padding: 15px; text-align: left; }
+        th { background-color: var(--primary); color: white; font-weight: 500; }
+        tr:nth-child(even) { background-color: #fafafa; }
+        .formula-container { background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 15px 0; text-align: center; border: 1px dashed var(--accent); }
+        .step { margin-bottom: 10px; }
+        .step-num { font-weight: bold; color: var(--accent); margin-right: 10px; }
+        footer { text-align: center; padding: 20px; color: #7f8c8d; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Adatelemzés 1. Tananyag</h1>
+            <p>Gyakorlás Első Rész - Megoldókulcs és Magyarázat</p>
+        </header>
+
+        <!-- 1. feladat -->
+        <div class="card">
+            <h2>1. feladat: Ismérvek osztályozása</h2>
+            <div class="feladat">
+                Osztályozza adattípus (ismérv) és mérési módszer (skála) szerint az alábbi ismérveket!
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ismérv</th>
+                        <th>Adattípus</th>
+                        <th>Mérési skála</th>
+                        <th>Logika</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Villanykörte márkája</td>
+                        <td>Minőségi</td>
+                        <td>Névleges (Nominális)</td>
+                        <td>Csak csoportosítás, nincs sorrend.</td>
+                    </tr>
+                    <tr>
+                        <td>Éves értékesítés értéke</td>
+                        <td>Mennyiségi</td>
+                        <td>Arány skála</td>
+                        <td>Pénzösszeg, van természetes nulla pont.</td>
+                    </tr>
+                    <tr>
+                        <td>Hotel csillagszáma</td>
+                        <td>Minőségi</td>
+                        <td>Sorrendi (Ordinális)</td>
+                        <td>Kategóriák, de a sorrend fontos (több jobb).</td>
+                    </tr>
+                    <tr>
+                        <td>Hőmérséklet (°C)</td>
+                        <td>Mennyiségi</td>
+                        <td>Különbségi (Intervallum)</td>
+                        <td>A 0 fok nem a hőmérséklet hiányát jelenti.</td>
+                    </tr>
+                    <tr>
+                        <td>Ember életkora</td>
+                        <td>Mennyiségi</td>
+                        <td>Arány skála</td>
+                        <td>Időtartam, a 0 az élet kezdetét jelöli.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 2. feladat -->
+        <div class="card">
+            <h2>2. feladat: Aszimmetrikus eloszlás</h2>
+            <div class="feladat">
+                Egy sokaság jobbra aszimmetrikus. Adja meg a medián (\(Me\)), az átlag (\(\bar{x}\)) és a módusz (\(Mo\)) sorrendjét!
+            </div>
+            <div class="megoldas-box">
+                <span class="megoldas-label">Végeredmény:</span>
+                \( Mo < Me < \bar{x} \)
+            </div>
+            <div class="viz-container" style="text-align: center; margin: 20px 0; background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #eee;">
+                <svg width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Tengelyek -->
+                    <line x1="40" y1="170" x2="380" y2="170" stroke="#333" stroke-width="2" />
+                    <line x1="40" y1="170" x2="40" y2="20" stroke="#333" stroke-width="2" />
+                    
+                    <!-- Jobbra aszimmetrikus görbe -->
+                    <path d="M 40 170 Q 80 20 120 80 T 380 160" fill="none" stroke="#3498db" stroke-width="3" />
+                    
+                    <!-- Jelölők (Mo, Me, Átlag) -->
+                    <!-- Módusz -->
+                    <line x1="85" y1="45" x2="85" y2="170" stroke="#e74c3c" stroke-width="2" stroke-dasharray="4" />
+                    <text x="75" y="185" fill="#e74c3c" font-size="12" font-weight="bold">Mo</text>
+                    
+                    <!-- Medián -->
+                    <line x1="110" y1="75" x2="110" y2="170" stroke="#f39c12" stroke-width="2" stroke-dasharray="4" />
+                    <text x="100" y="185" fill="#f39c12" font-size="12" font-weight="bold">Me</text>
+                    
+                    <!-- Átlag -->
+                    <line x1="150" y1="105" x2="150" y2="170" stroke="#2ecc71" stroke-width="2" stroke-dasharray="4" />
+                    <text x="140" y="185" fill="#2ecc71" font-size="12" font-weight="bold">x̄</text>
+                    
+                    <text x="300" y="150" fill="#3498db" font-size="12" font-style="italic">Hosszú farok jobbra</text>
+                </svg>
+                <p style="font-size: 0.85em; color: #7f8c8d; margin-top: 10px;">Jobbra aszimmetrikus (pozitív) eloszlás grafikonja</p>
+            </div>
+            <div class="magyarazat">
+                <p>Jobbra aszimmetrikus (pozitív aszimmetria) esetén az eloszlásnak "hosszú farka" van a nagyobb értékek felé.</p>
+                <ul>
+                    <li><strong>Módusz (\(Mo\))</strong>: A görbe csúcsa, a leggyakoribb érték. Itt a legkisebb.</li>
+                    <li><strong>Átlag (\(\bar{x}\))</strong>: A ritka, de nagyon nagy értékek (a farok) jelentősen elhúzzák az átlagot felfelé.</li>
+                    <li><strong>Medián (\(Me\))</strong>: A középső érték, ami szimmetria esetén megegyezne a többivel, de itt a módusz és az átlag közé szorul.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 3. feladat -->
+        <div class="card">
+            <h2>3. feladat: Aszimmetria mérése (A-mutató)</h2>
+            <div class="feladat">
+                100 hallgató életkora alapján jellemezze az eloszlás aszimmetriáját az A-mutatóval!
+            </div>
+            <div class="formula-container">
+                \( A = \frac{\bar{x} - Mo}{\sigma} \)
+            </div>
+            <div class="magyarazat">
+                <div class="step"><span class="step-num">1.</span> <strong>Átlag kiszámítása:</strong> <br>
+                    \( \bar{x} = \frac{18 \cdot 3 + 19 \cdot 41 + 20 \cdot 31 + 21 \cdot 11 + 22 \cdot 7 + 23 \cdot 6 + 24 \cdot 1}{100} = \mathbf{20 \text{ év}} \)
+                </div>
+                <div class="step"><span class="step-num">2.</span> <strong>Módusz meghatározása:</strong> <br>
+                    A legnagyobb gyakoriság (41 fő) a 19 éveseknél van, tehát \( Mo = \mathbf{19 \text{ év}} \).
+                </div>
+                <div class="step"><span class="step-num">3.</span> <strong>Szórás (\(\sigma\)):</strong> <br>
+                    A variancia 1,62, amiből a szórás: \( \sigma = \sqrt{1,62} \approx \mathbf{1,27 \text{ év}} \).
+                </div>
+                <div class="step"><span class="step-num">4.</span> <strong>A-mutató behelyettesítése:</strong> <br>
+                    \( A = \frac{20 - 19}{1,27} = \mathbf{0,79} \).
+                </div>
+                <p><strong>Értelmezés:</strong> Mivel \(A > 0\), az eloszlás <strong>jobbra aszimmetrikus</strong>.</p>
+            </div>
+        </div>
+
+        <!-- 4. feladat -->
+        <div class="card">
+            <h2>4. feladat: Osztályközös statisztika</h2>
+            <div class="feladat">
+                Számítsa ki és értelmezze a dolgozók utazási idejének átlagát, móduszát és mediánját!
+            </div>
+            <div class="magyarazat">
+                <p><strong>Átlag (\(\bar{x}\)):</strong> Az osztályközök közepeivel (5, 15, 25, 35, 45) számolva: <strong>25 perc</strong>.</p>
+                <p><strong>Módusz (\(Mo\)):</strong> A móduszi osztályköz a 30-39 (itt van a legtöbb dolgozó: 50 fő).<br>
+                    \( Mo = 30 + \frac{50-40}{(50-40) + (50-10)} \cdot 10 = 30 + \frac{10}{50} \cdot 10 = \mathbf{32 \text{ perc}} \)
+                </p>
+                <p><strong>Medián (\(Me\)):</strong> A 150 fő fele a 75. dolgozó. Ő a 20-29 osztályközben található.<br>
+                    \( Me = 20 + \frac{75 - 50}{40} \cdot 10 = 20 + \frac{25}{40} \cdot 10 = \mathbf{26,25 \text{ perc}} \)
+                </p>
+                <p><strong>9. Decilis (\(D_9\)):</strong> A dolgozók 90%-ának (135 fő) utazási ideje legfeljebb ennyi.<br>
+                    \( D_9 = 30 + \frac{135 - 90}{50} \cdot 10 = \mathbf{39 \text{ perc}} \)
+                </p>
+            </div>
+        </div>
+
+        <!-- 5. feladat -->
+        <div class="card">
+            <h2>5. feladat: Indexszámítás alapok</h2>
+            <div class="feladat">
+                Jellemezze a termékek árváltozását Laspeyres és Paasche árindexekkel!
+            </div>
+            <div class="magyarazat">
+                <div class="step"><strong>Laspeyres árindex (\(I_p^L\)):</strong> Bázisidőszaki súlyozású.<br>
+                    \( I_p^L = \frac{\sum p_1 q_0}{\sum p_0 q_0} = \frac{650 \cdot 36 + 250 \cdot 24}{400 \cdot 36 + 200 \cdot 24} = \frac{29400}{19200} = \mathbf{1,5313 \text{ (153,13\%)}} \)
+                </div>
+                <div class="step"><strong>Paasche árindex (\(I_p^P\)):</strong> Tárgyidőszaki súlyozású.<br>
+                    \( I_p^P = \frac{\sum p_1 q_1}{\sum p_0 q_1} = \frac{650 \cdot 11 + 250 \cdot 36}{400 \cdot 11 + 200 \cdot 36} = \frac{16150}{11600} = \mathbf{1,3922 \text{ (139,22\%)}} \)
+                </div>
+                <p><strong>Értelmezés:</strong> Az árak átlagosan 53,1%-kal (Laspeyres) vagy 39,2%-kal (Paasche) nőttek. Az eltérést az magyarázza, hogy a termelési arányok (súlyok) jelentősen eltolódtak 2015-ről 2016-ra.</p>
+            </div>
+        </div>
+
+        <!-- 6. feladat -->
+        <div class="card">
+            <h2>6. feladat: Összetett indexek</h2>
+            <div class="feladat">
+                Határozza meg az értékindexet és a tárgyidőszaki volumenindexet!
+            </div>
+            <div class="magyarazat">
+                <p><strong>Értékindex (\(I_v\)):</strong> Megmutatja az eladási érték teljes változását.<br>
+                    \( I_v = \frac{\sum v_1}{\sum v_0} = \frac{153}{136} = \mathbf{1,125 \text{ (112,5\%)}} \)
+                </p>
+                <p><strong>Paasche volumenindex (\(I_q^P\)):</strong><br>
+                    \( I_q^P = \frac{\sum p_1 q_1}{\sum p_1 q_0} = \frac{153}{1,15 \cdot 56 + 0,98 \cdot 80} = \frac{153}{142,8} = \mathbf{1,0714 \text{ (107,14\%)}} \)
+                </p>
+                <p><strong>Értelmezés:</strong> Miközben az eladási érték 12,5%-kal nőtt, a termelés volumene (mennyisége) átlagosan 7,14%-os növekedést mutatott.</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 - Adatelemzés 1. Segédlet</p>
+        </footer>
+    </div>
+</body>
+</html>
