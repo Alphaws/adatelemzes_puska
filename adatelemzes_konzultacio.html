@@ -151,6 +151,58 @@
             </div>
         </div>
 
+        <!-- 2. feladat -->
+        <div class="card">
+            <h2>2. feladat: Osztályközös gyakorisági sor (Költések)</h2>
+            <div class="feladat">
+                Egy 100 fős iskolában feljegyezték a diákok napi költését. Számítson átlagot, móduszt és mediánt!
+            </div>
+
+            <table style="width: auto; margin: 20px auto; min-width: 400px;">
+                <thead>
+                    <tr>
+                        <th>Költség (Ft)</th>
+                        <th>Diákok száma (\(f_i\))</th>
+                        <th>Osztályközép (\(x_i\))</th>
+                        <th>\(f_i \cdot x_i\)</th>
+                        <th>Kumulált gyak. (\(f_i'\))</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>0 – 249</td><td>20</td><td>125</td><td>2500</td><td>20</td></tr>
+                    <tr><td>250 – 499</td><td>40</td><td>375</td><td>15000</td><td>60</td></tr>
+                    <tr><td>500 – 749</td><td>30</td><td>625</td><td>18750</td><td>90</td></tr>
+                    <tr><td>750 – 999</td><td>10</td><td>875</td><td>8750</td><td>100</td></tr>
+                    <tr style="font-weight: bold; background: #eee;"><td>Összesen</td><td>100</td><td>-</td><td>45000</td><td>-</td></tr>
+                </tbody>
+            </table>
+
+            <div class="magyarazat">
+                <div class="step">
+                    <strong>1. Átlag (\(\bar{x}\)) kiszámítása:</strong><br>
+                    Az osztályközepek (125, 375, 625, 875) és a gyakoriságok szorzatösszegéből:<br>
+                    \( \bar{x} = \frac{\sum f_i \cdot x_i}{N} = \frac{45000}{100} = \mathbf{450 \text{ Ft}} \)
+                </div>
+
+                <div class="step">
+                    <strong>2. Módusz (\(Mo\)) meghatározása:</strong><br>
+                    A legtöbb diák (40 fő) a 250-499 sávban van. Ez a móduszi osztályköz.<br>
+                    Képlet: \( Mo = x_{i,0} + \frac{k_1}{k_1+k_2} \cdot h \)<br>
+                    Ahol \( k_1 = 40 - 20 = 20 \) és \( k_2 = 40 - 30 = 10 \), az osztályköz hossza \( h = 250 \).<br>
+                    \( Mo = 250 + \frac{20}{20 + 10} \cdot 250 = 250 + \frac{2}{3} \cdot 250 \approx \mathbf{416,67 \text{ Ft}} \)
+                </div>
+
+                <div class="step">
+                    <strong>3. Medián (\(Me\)) meghatározása:</strong><br>
+                    A 100 fő fele az 50. diák. A kumulált gyakoriság alapján ő is a 250-499 sávba esik.<br>
+                    Képlet: \( Me = x_{i,0} + \frac{N/2 - f_{i-1}'}{f_i} \cdot h \)<br>
+                    \( Me = 250 + \frac{50 - 20}{40} \cdot 250 = 250 + 0,75 \cdot 250 = \mathbf{437,5 \text{ Ft}} \)
+                </div>
+
+                <p><em>Értelmezés:</em> Az átlagos költés 450 Ft, a leggyakoribb érték 416,67 Ft, és a diákok fele 437,5 Ft-nál kevesebbet költ.</p>
+            </div>
+        </div>
+
         <footer>
             <p>&copy; 2026 - Adatelemzés 1. Konzultáció | Készítette: Gemini CLI</p>
         </footer>
