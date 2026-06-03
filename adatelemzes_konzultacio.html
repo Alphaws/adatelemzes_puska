@@ -275,6 +275,79 @@
             </div>
         </div>
 
+        <!-- 3. feladat -->
+        <div class="card">
+            <h2>3. feladat: Indexszámítás és Hatásfelbontás</h2>
+            <div class="feladat">
+                Két termék (K és L) januári és márciusi adatai alapján számítsunk egyedi és együttes indexeket, valamint bontsuk fel a forgalomváltozást!
+            </div>
+
+            <table style="width: auto; margin: 20px auto;">
+                <thead>
+                    <tr>
+                        <th rowspan="2">Termék</th>
+                        <th colspan="2">Egységár (\(p\))</th>
+                        <th colspan="2">Mennyiség (\(q\))</th>
+                    </tr>
+                    <tr>
+                        <th>Jan (\(p_0\))</th>
+                        <th>Márc (\(p_1\))</th>
+                        <th>Jan (\(q_0\))</th>
+                        <th>Márc (\(q_1\))</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>K</td><td>360</td><td>210</td><td>40</td><td>55</td></tr>
+                    <tr><td>L</td><td>240</td><td>300</td><td>20</td><td>22</td></tr>
+                </tbody>
+            </table>
+
+            <div class="magyarazat">
+                <div class="step">
+                    <strong>1. Egyedi indexek:</strong><br>
+                    <ul>
+                        <li>K termék: \( i_{p,K} = 210/360 = \mathbf{0,5833 \text{ (58,3\%)}} \); \( i_{q,K} = 55/40 = \mathbf{1,375 \text{ (137,5\%)}} \)</li>
+                        <li>L termék: \( i_{p,L} = 300/240 = \mathbf{1,25 \text{ (125\%)}} \); \( i_{q,L} = 22/20 = \mathbf{1,1 \text{ (110\%)}} \)</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <strong>2. Együttes Árindexek:</strong><br>
+                    <ul>
+                        <li><strong>Laspeyres (Bázis):</strong> \( I_p^L = \frac{\sum p_1 q_0}{\sum p_0 q_0} = \frac{210 \cdot 40 + 300 \cdot 20}{360 \cdot 40 + 240 \cdot 20} = \frac{14400}{19200} = \mathbf{0,75 \text{ (75\%)}} \)</li>
+                        <li><strong>Paasche (Tárgy):</strong> \( I_p^P = \frac{\sum p_1 q_1}{\sum p_0 q_1} = \frac{210 \cdot 55 + 300 \cdot 22}{360 \cdot 55 + 240 \cdot 22} = \frac{18150}{25080} = \mathbf{0,7237 \text{ (72,4\%)}} \)</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <strong>3. Együttes Volumenindexek:</strong><br>
+                    <ul>
+                        <li><strong>Laspeyres (Bázis):</strong> \( I_q^L = \frac{\sum q_1 p_0}{\sum q_0 p_0} = \frac{55 \cdot 360 + 22 \cdot 240}{19200} = \frac{25080}{19200} = \mathbf{1,3063 \text{ (130,6\%)}} \)</li>
+                        <li><strong>Paasche (Tárgy):</strong> \( I_q^P = \frac{\sum q_1 p_1}{\sum q_0 p_1} = \frac{18150}{14400} = \mathbf{1,2604 \text{ (126\%)}} \)</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <strong>4. Forgalomváltozás elemzése:</strong><br>
+                    <ul>
+                        <li><strong>Értékindex (\(I_v\)):</strong> \( \frac{\sum p_1 q_1}{\sum p_0 q_0} = \frac{18150}{19200} = \mathbf{0,9453} \) &rarr; <strong>5,47%-os csökkenés</strong>.</li>
+                        <li><strong>Abszolút változás (\(\Delta V\)):</strong> \( 18150 - 19200 = \mathbf{-1050 \text{ Ft}} \).</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <strong>5. Hatásfelbontás (Mivel változott?):</strong><br>
+                    <ul>
+                        <li><strong>Volumenhatás:</strong> \( \Delta V_q = \sum q_1 p_0 - \sum q_0 p_0 = 25080 - 19200 = \mathbf{+5880 \text{ Ft}} \)</li>
+                        <li><strong>Árhatás:</strong> \( \Delta V_p = \sum q_1 p_1 - \sum q_1 p_0 = 18150 - 25080 = \mathbf{-6930 \text{ Ft}} \)</li>
+                        <li><strong>Ellenőrzés:</strong> \( 5880 + (-6930) = -1050 \text{ Ft} \).</li>
+                    </ul>
+                </div>
+
+                <p><em>Összegzés:</em> Bár a forgalom volumene átlagosan kb. 30,6%-kal nőtt, az árak átlagos 27,6%-os (Paasche) csökkenése miatt a cég bevétele végül 5,47%-kal (1050 Ft-tal) elmaradt a januáritól.</p>
+            </div>
+        </div>
+
         <footer>
             <p>&copy; 2026 - Adatelemzés 1. Konzultáció | Készítette: Gemini CLI</p>
         </footer>
