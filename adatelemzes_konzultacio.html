@@ -158,34 +158,41 @@
                 Egy 100 fős iskolában feljegyezték a diákok napi költését. Számítson átlagot, móduszt és mediánt!
             </div>
 
-            <table style="width: auto; margin: 20px auto; min-width: 400px;">
+            <table style="width: auto; margin: 20px auto; min-width: 450px;">
                 <thead>
                     <tr>
                         <th>Költség (Ft)</th>
                         <th>Diákok száma (\(f_i\))</th>
                         <th>Osztályközép (\(x_i\))</th>
                         <th>\(f_i \cdot x_i\)</th>
+                        <th>\(f_i \cdot x_i^2\)</th>
                         <th>Kumulált gyak. (\(f_i'\))</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>0 – 249</td><td>20</td><td>125</td><td>2500</td><td>20</td></tr>
-                    <tr><td>250 – 499</td><td>40</td><td>375</td><td>15000</td><td>60</td></tr>
-                    <tr><td>500 – 749</td><td>30</td><td>625</td><td>18750</td><td>90</td></tr>
-                    <tr><td>750 – 999</td><td>10</td><td>875</td><td>8750</td><td>100</td></tr>
-                    <tr style="font-weight: bold; background: #eee;"><td>Összesen</td><td>100</td><td>-</td><td>45000</td><td>-</td></tr>
+                    <tr><td>0 – 249</td><td>20</td><td>125</td><td>2500</td><td>312500</td><td>20</td></tr>
+                    <tr><td>250 – 499</td><td>40</td><td>375</td><td>15000</td><td>5625000</td><td>60</td></tr>
+                    <tr><td>500 – 749</td><td>30</td><td>625</td><td>18750</td><td>11718750</td><td>90</td></tr>
+                    <tr><td>750 – 999</td><td>10</td><td>875</td><td>8750</td><td>7656250</td><td>100</td></tr>
+                    <tr style="font-weight: bold; background: #eee;"><td>Összesen</td><td>100</td><td>-</td><td>45000</td><td>25312500</td><td>-</td></tr>
                 </tbody>
             </table>
 
             <div class="magyarazat">
                 <div class="step">
                     <strong>1. Átlag (\(\bar{x}\)) kiszámítása:</strong><br>
-                    Az osztályközepek (125, 375, 625, 875) és a gyakoriságok szorzatösszegéből:<br>
-                    \( \bar{x} = \frac{\sum f_i \cdot x_i}{N} = \frac{45000}{100} = \mathbf{450 \text{ Ft}} \)
+                    \( \bar{x} = \frac{45000}{100} = \mathbf{450 \text{ Ft}} \)
                 </div>
 
                 <div class="step">
-                    <strong>2. Módusz (\(Mo\)) meghatározása:</strong><br>
+                    <strong>2. Szórás (\(\sigma\)) kiszámítása:</strong><br>
+                    Képlet: \( \sigma = \sqrt{\frac{\sum f_i \cdot x_i^2}{N} - \bar{x}^2} \)<br>
+                    Variancia: \( \sigma^2 = \frac{25312500}{100} - 450^2 = 253125 - 202500 = \mathbf{50625} \)<br>
+                    Szórás: \( \sigma = \sqrt{50625} = \mathbf{225 \text{ Ft}} \)
+                </div>
+
+                <div class="step">
+                    <strong>3. Módusz (\(Mo\)) meghatározása:</strong><br>
                     A legtöbb diák (40 fő) a 250-499 sávban van. Ez a móduszi osztályköz.<br>
                     Képlet: \( Mo = x_{i,0} + \frac{k_1}{k_1+k_2} \cdot h \)<br>
                     Ahol \( k_1 = 40 - 20 = 20 \) és \( k_2 = 40 - 30 = 10 \), az osztályköz hossza \( h = 250 \).<br>
