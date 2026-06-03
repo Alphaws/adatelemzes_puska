@@ -430,11 +430,25 @@
                 </div>
 
                 <div class="megoldas-box">
-                    <span class="megoldas-label">Végeredmény:</span>
-                    \( P(A) = \mathbf{0,4744\%} \)
+                    <span class="megoldas-label">Végeredmény (a rész):</span>
+                    \( P(A) = \mathbf{0,004744 \text{ (0,4744\%)}} \)
                 </div>
 
-                <p><em>Értelmezés:</em> A teljes készletet tekintve a hibás tollak aránya kb. 0,47%, tehát egy véletlenül kiválasztott toll igen kis eséllyel lesz rossz.</p>
+                <div class="step">
+                    <strong>3. Bayes-tétel (b rész):</strong><br>
+                    Kérdés: Ha tudjuk, hogy a toll hibás (\(A\)), mennyi a valószínűsége, hogy a 3. gyártótól (\(B_3\)) származik?<br>
+                    Képlet: \( P(B_3|A) = \frac{P(B_3) \cdot P(A|B_3)}{P(A)} \)
+                    <br><br>
+                    Behelyettesítés:<br>
+                    \( P(B_3|A) = \frac{0,42 \cdot 0,0032}{0,004744} = \frac{0,001344}{0,004744} \approx \mathbf{0,2833} \)
+                </div>
+
+                <div class="megoldas-box">
+                    <span class="megoldas-label">Végeredmény (b rész):</span>
+                    \( P(B_3|A) \approx \mathbf{28,33\%} \)
+                </div>
+
+                <p><em>Értelmezés:</em> Bár a 3. gyártó szállítja a tollak 42%-át, a viszonylag alacsony hibaaránya miatt csak kb. 28,3% az esélye annak, hogy egy talált hibás toll tőlük származik.</p>
             </div>
         </div>
 
