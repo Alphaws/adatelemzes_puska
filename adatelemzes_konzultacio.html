@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adatelemzés 1. - Konzultációs Feladatok</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.min.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #d35400;
+            --bg: #fdf2e9;
+            --text: #333;
+            --card-bg: #fff;
+            --success: #27ae60;
+            --info: #2980b9;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            color: white;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        h1 { margin: 0; font-size: 2em; letter-spacing: 1px; }
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border-left: 6px solid var(--accent);
+        }
+        h2 { color: var(--primary); border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 0; }
+        .feladat { font-style: italic; color: #555; margin-bottom: 20px; background: #fdfaf9; padding: 18px; border-radius: 8px; border: 1px solid #eee; }
+        .megoldas-box { background: #e8f5e9; padding: 15px; border-radius: 8px; border-left: 4px solid var(--success); margin: 15px 0; }
+        .step { margin-bottom: 15px; padding-left: 10px; border-left: 2px solid #eee; }
+        .step-num { font-weight: bold; color: var(--info); margin-right: 10px; }
+        .viz-container { text-align: center; margin: 30px 0; background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #eee; overflow-x: auto; }
+        footer { text-align: center; padding: 20px; color: #7f8c8d; }
+        .back-link { text-align: left; margin-bottom: 15px; }
+        .back-link a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="back-link">
+                <a href="index.html">&larr; Vissza a főoldalra</a>
+            </div>
+            <h1>Adatelemzés Konzultáció</h1>
+            <p>2026.06.02 - Friss feladatok és megoldások</p>
+        </header>
+
+        <!-- 1. feladat -->
+        <div class="card">
+            <h2>1. feladat: Box-and-Whiskers diagram</h2>
+            <div class="feladat">
+                10 fős csapat ZH-ra készülési idejei (órában): 16, 9, 11, 15, 8, 14, 13, 11, 21, 19. <br>
+                Készítsük el a Boxplot diagramot!
+            </div>
+
+            <div class="magyarazat">
+                <div class="step"><span class="step-num">1.</span> <strong>Rendezett minta:</strong><br>
+                    8, 9, 11, 11, 13, 14, 15, 16, 19, 21
+                </div>
+                
+                <div class="step"><span class="step-num">2.</span> <strong>5-szám összefoglaló meghatározása:</strong><br>
+                    <ul>
+                        <li><b>Minimum:</b> 8</li>
+                        <li><b>Alsó kvartilis (\(Q_1\)):</b> Az alsó 5 érték mediánja: 11</li>
+                        <li><b>Medián (\(Me\)):</b> A 13 és 14 átlaga: (13+14)/2 = 13,5</li>
+                        <li><b>Felső kvartilis (\(Q_3\)):</b> A felső 5 érték mediánja: 16</li>
+                        <li><b>Maximum:</b> 21</li>
+                    </ul>
+                </div>
+
+                <div class="step"><span class="step-num">3.</span> <strong>Terjedelmi mutatók:</strong><br>
+                    \( IQR = Q_3 - Q_1 = 16 - 11 = 5 \)<br>
+                    Outlier határ (alsó): \( 11 - 1,5 \cdot 5 = 3,5 \) (Nincs outlier)<br>
+                    Outlier határ (felső): \( 16 + 1,5 \cdot 5 = 23,5 \) (Nincs outlier)
+                </div>
+
+                <div class="viz-container">
+                    <svg width="500" height="150" viewBox="0 0 500 150" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Skála -->
+                        <line x1="50" y1="120" x2="450" y2="120" stroke="#333" stroke-width="2" />
+                        <text x="50" y="140" font-size="12" text-anchor="middle">5</text>
+                        <text x="150" y="140" font-size="12" text-anchor="middle">10</text>
+                        <text x="250" y="140" font-size="12" text-anchor="middle">15</text>
+                        <text x="350" y="140" font-size="12" text-anchor="middle">20</text>
+                        <text x="450" y="140" font-size="12" text-anchor="middle">25</text>
+                        
+                        <!-- Rács vonalak (opcionális) -->
+                        <line x1="110" y1="120" x2="110" y2="115" stroke="#333" />
+                        <line x1="170" y1="120" x2="170" y2="115" stroke="#333" />
+                        <line x1="220" y1="120" x2="220" y2="115" stroke="#333" />
+                        
+                        <!-- Whiskers (Bajszok) -->
+                        <line x1="110" y1="70" x2="170" y2="70" stroke="#333" stroke-width="2" /> <!-- Bal bajusz -->
+                        <line x1="270" y1="70" x2="370" y2="70" stroke="#333" stroke-width="2" /> <!-- Jobb bajusz -->
+                        <line x1="110" y1="60" x2="110" y2="80" stroke="#333" stroke-width="2" /> <!-- Min határ -->
+                        <line x1="370" y1="60" x2="370" y2="80" stroke="#333" stroke-width="2" /> <!-- Max határ -->
+                        
+                        <!-- Box (Doboz) -->
+                        <rect x="170" y="40" width="100" height="60" fill="#f39c12" stroke="#333" stroke-width="2" fill-opacity="0.6" />
+                        
+                        <!-- Median vonal -->
+                        <line x1="220" y1="40" x2="220" y2="100" stroke="#c0392b" stroke-width="3" />
+                        
+                        <!-- Feliratok az ábrán -->
+                        <text x="110" y="30" font-size="11" text-anchor="middle" fill="#555">Min (8)</text>
+                        <text x="170" y="30" font-size="11" text-anchor="middle" fill="#555">Q1 (11)</text>
+                        <text x="220" y="115" font-size="11" text-anchor="middle" fill="#c0392b" font-weight="bold">Me (13,5)</text>
+                        <text x="270" y="30" font-size="11" text-anchor="middle" fill="#555">Q3 (16)</text>
+                        <text x="370" y="30" font-size="11" text-anchor="middle" fill="#555">Max (21)</text>
+                    </svg>
+                    <p style="font-size: 0.85em; color: #7f8c8d; margin-top: 10px;">Box-and-Whiskers diagram (Skála: 1 egység = 20px, eltolás +50px)</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 - Adatelemzés 1. Konzultáció | Készítette: Gemini CLI</p>
+        </footer>
+    </div>
+</body>
+</html>
