@@ -368,7 +368,7 @@
                 </div>
 
                 <div class="step">
-                    <strong>2. Valószínűség meghatározása:</strong><br>
+                    <strong>2. Valószínűség meghatározása (a rész):</strong><br>
                     Azt keressük, hogy \( P(X < 5380) = P(Z < -0,68) \).<br>
                     Mivel a táblázat csak pozitív értékeket tartalmaz, a szimmetria tulajdonságát használjuk:<br>
                     \( P(Z < -0,68) = 1 - \Phi(0,68) \)<br>
@@ -376,7 +376,19 @@
                     \( P = 1 - 0,7517 = \mathbf{0,2483 \text{ (24,83\%)}} \)
                 </div>
 
-                <p><em>Értelmezés:</em> Kb. 24,8%-os valószínűséggel fordul elő, hogy egy palackba 5380 ml-nél kevesebb ital kerül.</p>
+                <div class="step">
+                    <strong>3. Intervallum valószínűség (b rész):</strong><br>
+                    Kérdés: \( P(5250 < X < 5850) = ? \)<br>
+                    Standardizálás mindkét határra:<br>
+                    \( z_1 = \frac{5250 - 5550}{250} = \frac{-300}{250} = \mathbf{-1,2} \)<br>
+                    \( z_2 = \frac{5850 - 5550}{250} = \frac{300}{250} = \mathbf{1,2} \)<br>
+                    Mivel szimmetrikus az intervallum az átlagra (\(\pm 1,2 \sigma\)):<br>
+                    \( P(-1,2 < Z < 1,2) = \Phi(1,2) - \Phi(-1,2) = 2 \cdot \Phi(1,2) - 1 \)<br>
+                    A táblázatból: \( \Phi(1,2) \approx 0,8849 \).<br>
+                    \( P = 2 \cdot 0,8849 - 1 = 1,7698 - 1 = \mathbf{0,7698 \text{ (76,98\%)}} \)
+                </div>
+
+                <p><em>Értelmezés:</em> Kb. 77%-os eséllyel esik a töltött mennyiség az 5250 ml és 5850 ml közötti tartományba.</p>
             </div>
         </div>
 
