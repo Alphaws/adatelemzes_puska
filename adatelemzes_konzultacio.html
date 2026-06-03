@@ -452,6 +452,58 @@
             </div>
         </div>
 
+        <!-- 6. feladat -->
+        <div class="card">
+            <h2>6. feladat: Intervallumbecslés (Szabadságok)</h2>
+            <div class="feladat">
+                800 alkalmazottból (\(N\)) 150-et (\(n\)) kérdeztünk meg a kivett szabadságaikról. Adjon 95%-os intervallumbecslést azon dolgozók arányára, akik <b>legfeljebb 8 napot</b> voltak szabadságon!
+            </div>
+
+            <table style="width: auto; margin: 20px auto;">
+                <thead>
+                    <tr><th>Szabadság (nap)</th><th>Dolgozók száma (\(f_i\))</th></tr>
+                </thead>
+                <tbody>
+                    <tr style="background:#e8f5e9;"><td>6</td><td>9</td></tr>
+                    <tr style="background:#e8f5e9;"><td>7</td><td>15</td></tr>
+                    <tr style="background:#e8f5e9;"><td>8</td><td>36</td></tr>
+                    <tr><td>9</td><td>33</td></tr>
+                    <tr><td>10</td><td>30</td></tr>
+                    <tr><td>11</td><td>18</td></tr>
+                    <tr><td>12</td><td>9</td></tr>
+                    <tr style="font-weight:bold;"><td>Összesen</td><td>150</td></tr>
+                </tbody>
+            </table>
+
+            <div class="magyarazat">
+                <div class="step">
+                    <strong>1. Mintaarány (\(p\)) meghatározása:</strong><br>
+                    A "legfeljebb 8 nap" a 6, 7 és 8 napos kategóriákat jelenti.<br>
+                    Esetek száma: \( 9 + 15 + 36 = 60 \)<br>
+                    \( p = \frac{60}{150} = \mathbf{0,4 \text{ (40\%)}} \)
+                </div>
+
+                <div class="step">
+                    <strong>2. Standard hiba (\(s_p\)) kiszámítása:</strong><br>
+                    Mivel a sokaság véges (\(N=800\)), finit korrekciót alkalmazunk:<br>
+                    \( s_p = \sqrt{\frac{p \cdot (1-p)}{n}} \cdot \sqrt{\frac{N-n}{N-1}} \)<br>
+                    \( s_p = \sqrt{\frac{0,4 \cdot 0,6}{150}} \cdot \sqrt{\frac{800-150}{799}} \approx 0,04 \cdot 0,9019 = \mathbf{0,0361} \)
+                </div>
+
+                <div class="step">
+                    <strong>3. Konfidencia intervallum (95%):</strong><br>
+                    A 95%-hoz tartozó \(z\) érték: **1,96**.<br>
+                    Hibahatár: \( \Delta = 1,96 \cdot 0,0361 = \mathbf{0,0707 \text{ (7,07\%)}} \)<br>
+                    Intervallum: \( [0,4 - 0,0707; 0,4 + 0,0707] = \mathbf{[0,3293; 0,4707]} \)
+                </div>
+
+                <div class="megoldas-box">
+                    <span class="megoldas-label">Végeredmény:</span>
+                    95%-os megbízhatósággal állíthatjuk, hogy a legfeljebb 8 napot szabadságon lévők aránya a teljes sokaságban **32,93% és 47,07%** közé esik.
+                </div>
+            </div>
+        </div>
+
         <footer>
             <p>&copy; 2026 - Adatelemzés 1. Konzultáció | Készítette: Gemini CLI</p>
         </footer>
