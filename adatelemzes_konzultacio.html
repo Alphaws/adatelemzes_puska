@@ -348,6 +348,38 @@
             </div>
         </div>
 
+        <!-- 4. feladat -->
+        <div class="card">
+            <h2>4. feladat: Normális eloszlás (Italautomata)</h2>
+            <div class="feladat">
+                Egy italautomata 5550 ml-t tölt palackokba, a szórása 250 ml. Mennyi a valószínűsége, hogy az üvegben a mennyiség kevesebb mint 5380 ml?
+            </div>
+
+            <div class="magyarazat">
+                <p><strong>Adatok:</strong><br>
+                Átlag (\(\mu\)): 5550 ml<br>
+                Szórás (\(\sigma\)): 250 ml<br>
+                Keresett érték (\(x\)): 5380 ml</p>
+
+                <div class="step">
+                    <strong>1. Standardizálás:</strong><br>
+                    Alkalmazzuk a \( z = \frac{x - \mu}{\sigma} \) képletet:<br>
+                    \( z = \frac{5380 - 5550}{250} = \frac{-170}{250} = \mathbf{-0,68} \)
+                </div>
+
+                <div class="step">
+                    <strong>2. Valószínűség meghatározása:</strong><br>
+                    Azt keressük, hogy \( P(X < 5380) = P(Z < -0,68) \).<br>
+                    Mivel a táblázat csak pozitív értékeket tartalmaz, a szimmetria tulajdonságát használjuk:<br>
+                    \( P(Z < -0,68) = 1 - \Phi(0,68) \)<br>
+                    A standard normális eloszlás táblázatából: \( \Phi(0,68) \approx 0,7517 \).<br>
+                    \( P = 1 - 0,7517 = \mathbf{0,2483 \text{ (24,83\%)}} \)
+                </div>
+
+                <p><em>Értelmezés:</em> Kb. 24,8%-os valószínűséggel fordul elő, hogy egy palackba 5380 ml-nél kevesebb ital kerül.</p>
+            </div>
+        </div>
+
         <footer>
             <p>&copy; 2026 - Adatelemzés 1. Konzultáció | Készítette: Gemini CLI</p>
         </footer>
