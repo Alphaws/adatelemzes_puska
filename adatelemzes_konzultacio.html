@@ -456,50 +456,70 @@
         <div class="card">
             <h2>6. feladat: Intervallumbecslés (Szabadságok)</h2>
             <div class="feladat">
-                900 alkalmazottból (\(N\)) 150-et (\(n\)) kérdeztünk meg a kivett szabadságaikról. Adjon 95%-os intervallumbecslést azon dolgozók arányára, akik <b>legfeljebb 8 napot</b> voltak szabadságon!
+                900 alkalmazottból (\(N\)) 150-et (\(n\)) kérdeztünk meg a kivett szabadságaikról. <br>
+                a) Adjon 95%-os intervallumbecslést azon dolgozók arányára, akik <b>legfeljebb 8 napot</b> voltak szabadságon! <br>
+                b) Adjon 95%-os intervallumbecslést a dolgozók <b>átlagos szabadságára</b>!
             </div>
 
             <table style="width: auto; margin: 20px auto;">
                 <thead>
-                    <tr><th>Szabadság (nap)</th><th>Dolgozók száma (\(f_i\))</th></tr>
+                    <tr><th>Szabadság (nap, \(x_i\))</th><th>Dolgozók száma (\(f_i\))</th><th>\(f_i \cdot x_i\)</th><th>\(f_i \cdot (x_i-\bar{x})^2\)</th></tr>
                 </thead>
                 <tbody>
-                    <tr style="background:#e8f5e9;"><td>6</td><td>9</td></tr>
-                    <tr style="background:#e8f5e9;"><td>7</td><td>15</td></tr>
-                    <tr style="background:#e8f5e9;"><td>8</td><td>36</td></tr>
-                    <tr><td>9</td><td>33</td></tr>
-                    <tr><td>10</td><td>30</td></tr>
-                    <tr><td>11</td><td>18</td></tr>
-                    <tr><td>12</td><td>9</td></tr>
-                    <tr style="font-weight:bold;"><td>Összesen</td><td>150</td></tr>
+                    <tr><td>6</td><td>9</td><td>54</td><td>81</td></tr>
+                    <tr><td>7</td><td>15</td><td>105</td><td>60</td></tr>
+                    <tr><td>8</td><td>36</td><td>288</td><td>36</td></tr>
+                    <tr><td>9</td><td>33</td><td>297</td><td>0</td></tr>
+                    <tr><td>10</td><td>30</td><td>300</td><td>30</td></tr>
+                    <tr><td>11</td><td>18</td><td>198</td><td>72</td></tr>
+                    <tr><td>12</td><td>9</td><td>108</td><td>81</td></tr>
+                    <tr style="font-weight:bold; background: #eee;"><td>Összesen</td><td>150</td><td>1350</td><td>360</td></tr>
                 </tbody>
             </table>
 
             <div class="magyarazat">
+                <p><strong>a) Aránybecslés (Legfeljebb 8 nap):</strong></p>
                 <div class="step">
-                    <strong>1. Mintaarány (\(p\)) meghatározása:</strong><br>
-                    A "legfeljebb 8 nap" a 6, 7 és 8 napos kategóriákat jelenti.<br>
-                    Esetek száma: \( 9 + 15 + 36 = 60 \)<br>
-                    \( p = \frac{60}{150} = \mathbf{0,4 \text{ (40\%)}} \)
+                    <strong>1. Mintaarány (\(p\)):</strong><br>
+                    Esetek száma: \( 9 + 15 + 36 = 60 \); \( p = 60/150 = \mathbf{0,4} \)
                 </div>
 
                 <div class="step">
-                    <strong>2. Standard hiba (\(s_p\)) kiszámítása:</strong><br>
-                    Mivel a sokaság véges (\(N=900\)), finit korrekciót alkalmazunk:<br>
-                    \( s_p = \sqrt{\frac{p \cdot (1-p)}{n}} \cdot \sqrt{\frac{N-n}{N-1}} \)<br>
-                    \( s_p = \sqrt{\frac{0,4 \cdot 0,6}{150}} \cdot \sqrt{\frac{900-150}{899}} \approx 0,04 \cdot 0,9134 = \mathbf{0,0365} \)
+                    <strong>2. Standard hiba és CI:</strong><br>
+                    \( s_p = \sqrt{\frac{0,4 \cdot 0,6}{150}} \cdot \sqrt{\frac{900-150}{899}} \approx \mathbf{0,0365} \)<br>
+                    Hibahatár (\(z=1,96\)): \( \Delta = 1,96 \cdot 0,0365 = \mathbf{0,0715} \)<br>
+                    Intervallum: \(\mathbf{[32,85\%; 47,15\%]}\)
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+
+                <p><strong>b) Átlagbecslés:</strong></p>
+                <div class="step">
+                    <strong>1. Mintaátlag (\(\bar{x}\)):</strong><br>
+                    \( \bar{x} = \frac{\sum f_i x_i}{n} = \frac{1350}{150} = \mathbf{9 \text{ nap}} \)
                 </div>
 
                 <div class="step">
-                    <strong>3. Konfidencia intervallum (95%):</strong><br>
-                    A 95%-hoz tartozó \(z\) érték: **1,96**.<br>
-                    Hibahatár: \( \Delta = 1,96 \cdot 0,0365 = \mathbf{0,0715 \text{ (7,15\%)}} \)<br>
-                    Intervallum: \( [0,4 - 0,0715; 0,4 + 0,0715] = \mathbf{[0,3285; 0,4715]} \)
+                    <strong>2. Mintaszórás (\(s\)):</strong><br>
+                    Variancia: \( s^2 = \frac{\sum f_i (x_i - \bar{x})^2}{n-1} = \frac{360}{149} \approx \mathbf{2,416} \)<br>
+                    Szórás: \( s = \sqrt{2,416} \approx \mathbf{1,554 \text{ nap}} \)
+                </div>
+
+                <div class="step">
+                    <strong>3. Átlag standard hibája (\(s_{\bar{x}}\)):</strong><br>
+                    \( s_{\bar{x}} = \frac{s}{\sqrt{n}} \cdot \sqrt{\frac{N-n}{N-1}} = \frac{1,554}{\sqrt{150}} \cdot \sqrt{\frac{900-150}{899}} \)<br>
+                    \( s_{\bar{x}} = 0,1269 \cdot 0,9134 \approx \mathbf{0,1159 \text{ nap}} \)
+                </div>
+
+                <div class="step">
+                    <strong>4. Konfidencia intervallum:</strong><br>
+                    Hibahatár: \( \Delta = 1,96 \cdot 0,1159 = \mathbf{0,227 \text{ nap}} \)<br>
+                    Intervallum: \( [9 - 0,227; 9 + 0,227] = \mathbf{[8,773; 9,227] \text{ nap}} \)
                 </div>
 
                 <div class="megoldas-box">
                     <span class="megoldas-label">Végeredmény:</span>
-                    95%-os megbízhatósággal állíthatjuk, hogy a legfeljebb 8 napot szabadságon lévők aránya a teljes sokaságban **32,85% és 47,15%** közé esik.
+                    95%-os megbízhatósággal állíthatjuk, hogy az összes alkalmazott átlagos szabadsága **8,77 és 9,23 nap** közé esik.
                 </div>
             </div>
         </div>
