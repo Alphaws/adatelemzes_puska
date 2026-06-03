@@ -404,6 +404,40 @@
             </div>
         </div>
 
+        <!-- 5. feladat -->
+        <div class="card">
+            <h2>5. feladat: Teljes valószínűség tétele (Tollak)</h2>
+            <div class="feladat">
+                Három gyártó tollakat szállít. Az 1. gyártó a készlet 48%-át szállítja 0,5% hibaaránnyal. A 2. gyártó 10%-ot szállít 1% hibaaránnyal. A 3. gyártónál a tollak 0,32%-a hibás. Mennyi a valószínűsége, hogy egy véletlenszerűen kiválasztott toll hibás lesz?
+            </div>
+
+            <div class="magyarazat">
+                <p><strong>Események és adatok:</strong><br>
+                \(B_1\): 1. gyártó tollát választjuk (\(P(B_1) = 0,48\), hiba: \(P(A|B_1) = 0,005\))<br>
+                \(B_2\): 2. gyártó tollát választjuk (\(P(B_2) = 0,10\), hiba: \(P(A|B_2) = 0,01\))<br>
+                \(B_3\): 3. gyártó tollát választjuk (\(P(B_3) = 1 - 0,48 - 0,10 = \mathbf{0,42}\), hiba: \(P(A|B_3) = 0,0032\))<br>
+                \(A\): A kiválasztott toll hibás.</p>
+
+                <div class="step">
+                    <strong>1. Teljes valószínűség képlete:</strong><br>
+                    \( P(A) = P(B_1) \cdot P(A|B_1) + P(B_2) \cdot P(A|B_2) + P(B_3) \cdot P(A|B_3) \)
+                </div>
+
+                <div class="step">
+                    <strong>2. Számítás:</strong><br>
+                    \( P(A) = 0,48 \cdot 0,005 + 0,10 \cdot 0,01 + 0,42 \cdot 0,0032 \)<br>
+                    \( P(A) = 0,0024 + 0,001 + 0,001344 = \mathbf{0,004744} \)
+                </div>
+
+                <div class="megoldas-box">
+                    <span class="megoldas-label">Végeredmény:</span>
+                    \( P(A) = \mathbf{0,4744\%} \)
+                </div>
+
+                <p><em>Értelmezés:</em> A teljes készletet tekintve a hibás tollak aránya kb. 0,47%, tehát egy véletlenül kiválasztott toll igen kis eséllyel lesz rossz.</p>
+            </div>
+        </div>
+
         <footer>
             <p>&copy; 2026 - Adatelemzés 1. Konzultáció | Készítette: Gemini CLI</p>
         </footer>
