@@ -193,21 +193,41 @@
                 </div>
 
                 <div class="step">
-                    <strong>3. Módusz (\(Mo\)) meghatározása:</strong><br>
-                    A legtöbb diák (40 fő) a 250-499 sávban van. Ez a móduszi osztályköz.<br>
-                    Képlet: \( Mo = x_{i,0} + \frac{k_1}{k_1+k_2} \cdot h \)<br>
-                    Ahol \( k_1 = 40 - 20 = 20 \) és \( k_2 = 40 - 30 = 10 \), az osztályköz hossza \( h = 250 \).<br>
-                    \( Mo = 250 + \frac{20}{20 + 10} \cdot 250 = 250 + \frac{2}{3} \cdot 250 \approx \mathbf{416,67 \text{ Ft}} \)
+                    <strong>3. Medián (\(Me\)) és Kvartilisek (\(Q_1, Q_3\)) meghatározása:</strong><br>
+                    Mivel osztályközös adatokról van szó, interpolációt használunk:<br>
+                    <ul>
+                        <li><strong>Alsó kvartilis (\(Q_1\)):</strong> Rangszám: \( 100 / 4 = 25 \). Az első osztályközben (0-249) 20-an vannak, a 25. diák a 250-499 sávba esik.<br>
+                            \( Q_1 = 250 + \frac{25 - 20}{40} \cdot 250 = 250 + 31,25 = \mathbf{281,25 \text{ Ft}} \)
+                        </li>
+                        <li><strong>Medián (\(Me\)):</strong> Rangszám: \( 100 / 2 = 50 \). Szintén a 250-499 sáv.<br>
+                            \( Me = 250 + \frac{50 - 20}{40} \cdot 250 = 250 + 187,5 = \mathbf{437,5 \text{ Ft}} \)
+                        </li>
+                        <li><strong>Felső kvartilis (\(Q_3\)):</strong> Rangszám: \( 3 \cdot 100 / 4 = 75 \). Ez a 500-749 sávba esik (mivel előtte 60-an vannak).<br>
+                            \( Q_3 = 500 + \frac{75 - 60}{30} \cdot 250 = 500 + 125 = \mathbf{625 \text{ Ft}} \)
+                        </li>
+                    </ul>
                 </div>
 
                 <div class="step">
-                    <strong>3. Medián (\(Me\)) meghatározása:</strong><br>
-                    A 100 fő fele az 50. diák. A kumulált gyakoriság alapján ő is a 250-499 sávba esik.<br>
-                    Képlet: \( Me = x_{i,0} + \frac{N/2 - f_{i-1}'}{f_i} \cdot h \)<br>
-                    \( Me = 250 + \frac{50 - 20}{40} \cdot 250 = 250 + 0,75 \cdot 250 = \mathbf{437,5 \text{ Ft}} \)
+                    <strong>4. Módusz (\(Mo\)) meghatározása:</strong><br>
+                    A legtöbb diák (40 fő) a 250-499 sávban van.<br>
+                    \( Mo = 250 + \frac{40 - 20}{(40 - 20) + (40 - 30)} \cdot 250 \approx \mathbf{416,67 \text{ Ft}} \)
                 </div>
 
-                <p><em>Értelmezés:</em> Az átlagos költés 450 Ft, a leggyakoribb érték 416,67 Ft, és a diákok fele 437,5 Ft-nál kevesebbet költ.</p>
+                <div class="step">
+                    <strong>5. További mutatók:</strong><br>
+                    <ul>
+                        <li><strong>Terjedelem (\(R\)):</strong> \( x_{max} - x_{min} = 1000 - 0 = \mathbf{1000 \text{ Ft}} \)</li>
+                        <li><strong>Relatív szórás (\(V\)):</strong> \( \frac{\sigma}{\bar{x}} = \frac{225}{450} = \mathbf{0,5 \text{ (50\%)}} \)<br>
+                            <em>Értelmezés:</em> A szórás az átlag 50%-át teszi ki (közepes szóródás).
+                        </li>
+                        <li><strong>A-mutató (Aszimmetria):</strong> \( \frac{\bar{x} - Mo}{\sigma} = \frac{450 - 416,67}{225} = \mathbf{0,148} \)<br>
+                            <em>Értelmezés:</em> Mivel \( A > 0 \), az eloszlás enyhén <strong>jobbra aszimmetrikus</strong>.
+                        </li>
+                    </ul>
+                </div>
+
+                <p><em>Összegzés:</em> Az átlagos költés 450 Ft. A diákok 25%-a 281 Ft-nál kevesebbet, 75%-a pedig 625 Ft-nál kevesebbet költ. Az eloszlás enyhén jobbra aszimmetrikus és 50%-os relatív szóródást mutat.</p>
             </div>
         </div>
 
