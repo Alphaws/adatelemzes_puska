@@ -456,7 +456,7 @@
         <div class="card">
             <h2>6. feladat: Intervallumbecslés (Szabadságok)</h2>
             <div class="feladat">
-                800 alkalmazottból (\(N\)) 150-et (\(n\)) kérdeztünk meg a kivett szabadságaikról. Adjon 95%-os intervallumbecslést azon dolgozók arányára, akik <b>legfeljebb 8 napot</b> voltak szabadságon!
+                900 alkalmazottból (\(N\)) 150-et (\(n\)) kérdeztünk meg a kivett szabadságaikról. Adjon 95%-os intervallumbecslést azon dolgozók arányára, akik <b>legfeljebb 8 napot</b> voltak szabadságon!
             </div>
 
             <table style="width: auto; margin: 20px auto;">
@@ -485,21 +485,21 @@
 
                 <div class="step">
                     <strong>2. Standard hiba (\(s_p\)) kiszámítása:</strong><br>
-                    Mivel a sokaság véges (\(N=800\)), finit korrekciót alkalmazunk:<br>
+                    Mivel a sokaság véges (\(N=900\)), finit korrekciót alkalmazunk:<br>
                     \( s_p = \sqrt{\frac{p \cdot (1-p)}{n}} \cdot \sqrt{\frac{N-n}{N-1}} \)<br>
-                    \( s_p = \sqrt{\frac{0,4 \cdot 0,6}{150}} \cdot \sqrt{\frac{800-150}{799}} \approx 0,04 \cdot 0,9019 = \mathbf{0,0361} \)
+                    \( s_p = \sqrt{\frac{0,4 \cdot 0,6}{150}} \cdot \sqrt{\frac{900-150}{899}} \approx 0,04 \cdot 0,9134 = \mathbf{0,0365} \)
                 </div>
 
                 <div class="step">
                     <strong>3. Konfidencia intervallum (95%):</strong><br>
                     A 95%-hoz tartozó \(z\) érték: **1,96**.<br>
-                    Hibahatár: \( \Delta = 1,96 \cdot 0,0361 = \mathbf{0,0707 \text{ (7,07\%)}} \)<br>
-                    Intervallum: \( [0,4 - 0,0707; 0,4 + 0,0707] = \mathbf{[0,3293; 0,4707]} \)
+                    Hibahatár: \( \Delta = 1,96 \cdot 0,0365 = \mathbf{0,0715 \text{ (7,15\%)}} \)<br>
+                    Intervallum: \( [0,4 - 0,0715; 0,4 + 0,0715] = \mathbf{[0,3285; 0,4715]} \)
                 </div>
 
                 <div class="megoldas-box">
                     <span class="megoldas-label">Végeredmény:</span>
-                    95%-os megbízhatósággal állíthatjuk, hogy a legfeljebb 8 napot szabadságon lévők aránya a teljes sokaságban **32,93% és 47,07%** közé esik.
+                    95%-os megbízhatósággal állíthatjuk, hogy a legfeljebb 8 napot szabadságon lévők aránya a teljes sokaságban **32,85% és 47,15%** közé esik.
                 </div>
             </div>
         </div>
