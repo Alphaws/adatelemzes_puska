@@ -227,6 +227,49 @@
                     </ul>
                 </div>
 
+                <div class="viz-container">
+                    <svg width="500" height="250" viewBox="0 0 500 250" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Tengelyek -->
+                        <line x1="50" y1="200" x2="450" y2="200" stroke="#333" stroke-width="2" /> <!-- X tengely -->
+                        <line x1="50" y1="200" x2="50" y2="20" stroke="#333" stroke-width="2" />  <!-- Y tengely -->
+                        
+                        <!-- Y tengely skála (fő) -->
+                        <text x="40" y="200" font-size="12" text-anchor="end">0</text>
+                        <text x="40" y="160" font-size="12" text-anchor="end">10</text>
+                        <text x="40" y="120" font-size="12" text-anchor="end">20</text>
+                        <text x="40" y="80" font-size="12" text-anchor="end">30</text>
+                        <text x="40" y="40" font-size="12" text-anchor="end">40</text>
+                        <text x="25" y="20" font-size="11" fill="#777">fő</text>
+
+                        <!-- Oszlopok (Histogram) - 1 fő = 4px magasság, 250 Ft = 100px szélesség -->
+                        <!-- 0-249 (20 fő) -->
+                        <rect x="50" y="120" width="100" height="80" fill="#3498db" stroke="#fff" stroke-width="1" />
+                        <text x="100" y="215" font-size="11" text-anchor="middle">0-249</text>
+                        
+                        <!-- 250-499 (40 fő) -->
+                        <rect x="150" y="40" width="100" height="160" fill="#2980b9" stroke="#fff" stroke-width="1" />
+                        <text x="200" y="215" font-size="11" text-anchor="middle">250-499</text>
+                        
+                        <!-- 500-749 (30 fő) -->
+                        <rect x="250" y="80" width="100" height="120" fill="#3498db" stroke="#fff" stroke-width="1" />
+                        <text x="300" y="215" font-size="11" text-anchor="middle">500-749</text>
+                        
+                        <!-- 750-999 (10 fő) -->
+                        <rect x="350" y="160" width="100" height="40" fill="#3498db" stroke="#fff" stroke-width="1" />
+                        <text x="400" y="215" font-size="11" text-anchor="middle">750-999</text>
+
+                        <!-- Mutatók (Átlag és Medián helye) -->
+                        <!-- Átlag (450 Ft -> x=50 + 450*0.4 = 230) -->
+                        <line x1="230" y1="30" x2="230" y2="200" stroke="#c0392b" stroke-width="2" stroke-dasharray="4" />
+                        <text x="230" y="25" font-size="11" text-anchor="middle" fill="#c0392b" font-weight="bold">x̄ (450)</text>
+                        
+                        <!-- Medián (437.5 Ft -> x=50 + 437.5*0.4 = 225) -->
+                        <line x1="225" y1="50" x2="225" y2="200" stroke="#f39c12" stroke-width="2" stroke-dasharray="2" />
+                        <text x="225" y="240" font-size="11" text-anchor="middle" fill="#f39c12" font-weight="bold">Me (437,5)</text>
+                    </svg>
+                    <p style="font-size: 0.85em; color: #7f8c8d; margin-top: 10px;">Gyakorisági hisztogram (A tengelyen a Ft, függőlegesen a létszám)</p>
+                </div>
+
                 <p><em>Összegzés:</em> Az átlagos költés 450 Ft. A diákok 25%-a 281 Ft-nál kevesebbet, 75%-a pedig 625 Ft-nál kevesebbet költ. Az eloszlás enyhén jobbra aszimmetrikus és 50%-os relatív szóródást mutat.</p>
             </div>
         </div>
