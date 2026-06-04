@@ -31,6 +31,50 @@
             margin: 0;
             padding: 20px;
         }
+
+        /* Nyomtatási optimalizálás */
+        @media print {
+            body {
+                background-color: white !important;
+                color: black !important;
+                padding: 0;
+            }
+            .container {
+                max-width: 100% !important;
+                margin: 0 !important;
+            }
+            .back-link, header, footer {
+                display: none !important;
+            }
+            .card {
+                page-break-before: always;
+                border: 1px solid #ccc !important;
+                box-shadow: none !important;
+                margin: 0 0 20px 0 !important;
+                padding: 20px !important;
+                border-left: 8px solid var(--accent) !important;
+            }
+            .card:first-of-type {
+                page-break-before: auto;
+            }
+            .viz-container {
+                border: none !important;
+                page-break-inside: avoid;
+            }
+            .megoldas-box {
+                background: #f0f0f0 !important;
+                border: 1px solid #333 !important;
+                color: black !important;
+            }
+            .formula-container {
+                border: 1px solid #333 !important;
+                background: white !important;
+            }
+            .step {
+                border-left: 2px solid #ccc !important;
+            }
+        }
+
         .container {
             max-width: 900px;
             margin: 0 auto;
