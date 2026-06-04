@@ -670,6 +670,36 @@
                     </li>
                     
                     <li style="margin-bottom: 15px; padding: 15px; background: #fffaf0; border-radius: 8px; border-left: 4px solid #f39c12;">
+                        <b>Aszimmetria (Skewness) értelmezése:</b>
+                        <ul>
+                            <li><b>Balra aszimmetrikus:</b> \( \bar{x} < Me < Mo \) (\( A < 0 \)). A "farok" balra nyúlik.</li>
+                            <li><b>Szimmetrikus:</b> \( \bar{x} = Me = Mo \) (\( A = 0 \)).</li>
+                            <li><b>Jobbra aszimmetrikus:</b> \( Mo < Me < \bar{x} \) (\( A > 0 \)). A "farok" jobbra nyúlik.</li>
+                        </ul>
+                    </li>
+
+                    <li style="margin-bottom: 15px; padding: 15px; background: #fffaf0; border-radius: 8px; border-left: 4px solid #f39c12;">
+                        <b>Szóródás és Homogenitás:</b>
+                        A Relatív szórás (\(V\)) megmutatja a sokaság egységességét. 
+                        Ha \( V < 0,1 \), a sokaság <b>erősen homogén</b>. 
+                        Ha \( V > 0,3 \), a sokaság <b>heterogén</b> (szétszórt).
+                    </li>
+
+                    <li style="margin-bottom: 15px; padding: 15px; background: #fffaf0; border-radius: 8px; border-left: 4px solid #f39c12;">
+                        <b>Becsléstan – Finit korrekció:</b>
+                        A korrekciós tényezőt (\( \sqrt{\frac{N-n}{N-1}} \)) akkor <b>kell</b> használni, ha a mintavételi arány meghaladja az 5%-ot (\( n/N > 0,05 \)). Ha ez alatt van, a tényező értéke közel 1, így elhagyható.
+                    </li>
+
+                    <li style="margin-bottom: 15px; padding: 15px; background: #fffaf0; border-radius: 8px; border-left: 4px solid #f39c12;">
+                        <b>Kombinatórika röviden:</b>
+                        <ul>
+                            <li><b>Permutáció (\(n!\)):</b> Adott elem összes lehetséges sorrendje.</li>
+                            <li><b>Variáció:</b> \(n\) elemből \(k\)-at választunk, a <b>sorrend számít</b>.</li>
+                            <li><b>Kombináció \(\binom{n}{k}\):</b> \(n\) elemből \(k\)-at választunk, a <b>sorrend NEM számít</b>.</li>
+                        </ul>
+                    </li>
+
+                    <li style="margin-bottom: 15px; padding: 15px; background: #fffaf0; border-radius: 8px; border-left: 4px solid #f39c12;">
                         <b>Standard hiba (\(s_{\bar{x}}\)):</b> Azt mutatja meg, hogy a mintából számított átlagok mennyire szóródnak a valódi sokasági átlag körül. Ezt használjuk a becslés megbízhatóságának meghatározásához.
                     </li>
                 </ul>
