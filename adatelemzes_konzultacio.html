@@ -127,40 +127,46 @@
                     <ul>
                         <li><b>Átlag:</b> \( \bar{x} = \frac{\sum f_i x_i}{N} \)</li>
                         <li><b>Szórás:</b> \( \sigma = \sqrt{\frac{\sum f_i x_i^2}{N} - \bar{x}^2} \)</li>
-                        <li><b>Módusz (osztályközös):</b> \( Mo = x_{i,0} + \frac{k_1}{k_1+k_2} \cdot h \)</li>
-                        <li><b>Kvartilisek / Medián:</b> \( Q_q = x_{i,0} + \frac{\frac{q \cdot N}{4} - f_{i-1}'}{f_i} \cdot h \)</li>
+                        <li><b>Módusz:</b> \( Mo = x_{i,0} + \frac{k_1}{k_1+k_2} \cdot h \)</li>
+                        <li><b>Kvartilisek:</b> \( Q_q = x_{i,0} + \frac{\frac{q \cdot N}{4} - f_{i-1}'}{f_i} \cdot h \)</li>
                         <li><b>A-mutató:</b> \( A = \frac{\bar{x} - Mo}{\sigma} \)</li>
-                        <li><b>Relatív szórás:</b> \( V = \frac{\sigma}{\bar{x}} \)</li>
                     </ul>
+                    <p style="font-size: 0.75em; color: #666; margin-top: 5px;">
+                        <i>Jelölések:</i> \(f_i\): gyakoriság; \(x_i\): érték/osztályközép; \(N\): összesen; \(x_{i,0}\): osztályköz alsó határa; \(h\): osztályköz hossza; \(k_1, k_2\): szomszédos gyakoriság különbségek; \(f_{i-1}'\): előző kumulált gyakoriság.
+                    </p>
                 </div>
                 <div>
                     <h4>3. Feladat: Indexszámítás</h4>
                     <ul>
                         <li><b>Értékindex:</b> \( I_v = \frac{\sum p_1 q_1}{\sum p_0 q_0} \)</li>
-                        <li><b>Laspeyres Árindex:</b> \( I_p^L = \frac{\sum p_1 q_0}{\sum p_0 q_0} \)</li>
-                        <li><b>Paasche Árindex:</b> \( I_p^P = \frac{\sum p_1 q_1}{\sum p_0 q_1} \)</li>
-                        <li><b>Laspeyres Volumen:</b> \( I_q^L = \frac{\sum q_1 p_0}{\sum q_0 p_0} \)</li>
-                        <li><b>Paasche Volumen:</b> \( I_q^P = \frac{\sum q_1 p_1}{\sum q_0 p_1} \)</li>
-                        <li><b>Összefüggés:</b> \( I_v = I_p^L \cdot I_q^P = I_p^P \cdot I_q^L \)</li>
+                        <li><b>L-Ár / P-Ár:</b> \( I_p^L = \frac{\sum p_1 q_0}{\sum p_0 q_0} \); \( I_p^P = \frac{\sum p_1 q_1}{\sum p_0 q_1} \)</li>
+                        <li><b>L-Vol / P-Vol:</b> \( I_q^L = \frac{\sum q_1 p_0}{\sum q_0 p_0} \); \( I_q^P = \frac{\sum q_1 p_1}{\sum q_0 p_1} \)</li>
                     </ul>
+                    <p style="font-size: 0.75em; color: #666; margin-top: 5px;">
+                        <i>Jelölések:</i> \(p\): ár; \(q\): mennyiség; \(0\): bázisidőszak; \(1\): tárgyidőszak; \(L\): Laspeyres (bázissúlyú); \(P\): Paasche (tárgyidőszaki súlyú).
+                    </p>
                 </div>
                 <div>
                     <h4>4-5. Feladat: Valószínűség</h4>
                     <ul>
-                        <li><b>Standardizálás:</b> \( z = \frac{x - \mu}{\sigma} \)</li>
-                        <li><b>Inverz érték:</b> \( x = \mu + z \cdot \sigma \)</li>
-                        <li><b>Teljes valószínűség:</b> \( P(A) = \sum P(B_i) \cdot P(A|B_i) \)</li>
-                        <li><b>Bayes-tétel:</b> \( P(B_i|A) = \frac{P(B_i) \cdot P(A|B_i)}{P(A)} \)</li>
+                        <li><b>Z-érték:</b> \( z = \frac{x - \mu}{\sigma} \)</li>
+                        <li><b>Teljes P:</b> \( P(A) = \sum P(B_i) \cdot P(A|B_i) \)</li>
+                        <li><b>Bayes:</b> \( P(B_i|A) = \frac{P(B_i) \cdot P(A|B_i)}{P(A)} \)</li>
                     </ul>
+                    <p style="font-size: 0.75em; color: #666; margin-top: 5px;">
+                        <i>Jelölések:</i> \(\mu\): várható érték (átlag); \(\sigma\): szórás; \(P(B_i)\): hipotézis esélye; \(P(A|B_i)\): feltételes valószínűség (hibaarány).
+                    </p>
                 </div>
                 <div>
                     <h4>6. Feladat: Becsléstan</h4>
                     <ul>
-                        <li><b>Arány standard hiba:</b> \( s_p = \sqrt{\frac{p(1-p)}{n}} \cdot \sqrt{\frac{N-n}{N-1}} \)</li>
-                        <li><b>Átlag standard hiba:</b> \( s_{\bar{x}} = \frac{s}{\sqrt{n}} \cdot \sqrt{\frac{N-n}{N-1}} \)</li>
-                        <li><b>Hibahatár:</b> \( \Delta = z \cdot s_{becslő} \)</li>
-                        <li><b>Konf. intervallum:</b> \( [becslés \pm \Delta] \)</li>
+                        <li><b>Std. hiba (p):</b> \( s_p = \sqrt{\frac{p(1-p)}{n}} \cdot \sqrt{\frac{N-n}{N-1}} \)</li>
+                        <li><b>Std. hiba (x):</b> \( s_{\bar{x}} = \frac{s}{\sqrt{n}} \cdot \sqrt{\frac{N-n}{N-1}} \)</li>
+                        <li><b>Hiba:</b> \( \Delta = z \cdot s_{becslő} \)</li>
                     </ul>
+                    <p style="font-size: 0.75em; color: #666; margin-top: 5px;">
+                        <i>Jelölések:</i> \(N\): sokaság; \(n\): minta; \(p\): mintaarány; \(s\): mintaszórás; \(z\): megbízhatósághoz tartozó érték (pl. 95% &rarr; 1,96).
+                    </p>
                 </div>
             </div>
         </div>
