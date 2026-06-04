@@ -53,10 +53,9 @@
             }
             .card {
                 page-break-before: always;
-                border: 1px solid #000 !important;
-                margin: 0 0 20px 0 !important;
-                padding: 20px !important;
-                border-left: 10px solid black !important;
+                border: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
             }
             .card:first-of-type {
                 page-break-before: auto;
@@ -64,20 +63,22 @@
             .viz-container {
                 border: none !important;
                 page-break-inside: avoid;
+                margin: 10px 0 !important;
             }
             .megoldas-box, .formula-container {
-                border: 2px solid #000 !important;
+                border: none !important;
                 background: white !important;
-                padding: 10px !important;
+                padding: 10px 0 !important;
             }
             .step {
-                border-left: 2px solid #333 !important;
+                border-left: none !important;
+                padding-left: 0 !important;
             }
             table, th, td {
-                border: 1px solid black !important;
+                border: 1px solid black !important; /* A táblázatoknál a rácsot megtartjuk az olvashatóságért */
             }
             th {
-                background: #eee !important; /* Enyhe szürke a fejlécnek még mehet */
+                background: white !important;
             }
         }
 
