@@ -118,6 +118,53 @@
             <p>2026.06.02 - Friss feladatok és megoldások</p>
         </header>
 
+        <!-- Képletgyűjtemény -->
+        <div class="card" style="border-left-color: #3498db;">
+            <h2>Vizsga Segédlet: Képletgyűjtemény</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div>
+                    <h4>1-2. Feladat: Leíró statisztika</h4>
+                    <ul>
+                        <li><b>Átlag:</b> \( \bar{x} = \frac{\sum f_i x_i}{N} \)</li>
+                        <li><b>Szórás:</b> \( \sigma = \sqrt{\frac{\sum f_i x_i^2}{N} - \bar{x}^2} \)</li>
+                        <li><b>Módusz (osztályközös):</b> \( Mo = x_{i,0} + \frac{k_1}{k_1+k_2} \cdot h \)</li>
+                        <li><b>Kvartilisek / Medián:</b> \( Q_q = x_{i,0} + \frac{\frac{q \cdot N}{4} - f_{i-1}'}{f_i} \cdot h \)</li>
+                        <li><b>A-mutató:</b> \( A = \frac{\bar{x} - Mo}{\sigma} \)</li>
+                        <li><b>Relatív szórás:</b> \( V = \frac{\sigma}{\bar{x}} \)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>3. Feladat: Indexszámítás</h4>
+                    <ul>
+                        <li><b>Értékindex:</b> \( I_v = \frac{\sum p_1 q_1}{\sum p_0 q_0} \)</li>
+                        <li><b>Laspeyres Árindex:</b> \( I_p^L = \frac{\sum p_1 q_0}{\sum p_0 q_0} \)</li>
+                        <li><b>Paasche Árindex:</b> \( I_p^P = \frac{\sum p_1 q_1}{\sum p_0 q_1} \)</li>
+                        <li><b>Laspeyres Volumen:</b> \( I_q^L = \frac{\sum q_1 p_0}{\sum q_0 p_0} \)</li>
+                        <li><b>Paasche Volumen:</b> \( I_q^P = \frac{\sum q_1 p_1}{\sum q_0 p_1} \)</li>
+                        <li><b>Összefüggés:</b> \( I_v = I_p^L \cdot I_q^P = I_p^P \cdot I_q^L \)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>4-5. Feladat: Valószínűség</h4>
+                    <ul>
+                        <li><b>Standardizálás:</b> \( z = \frac{x - \mu}{\sigma} \)</li>
+                        <li><b>Inverz érték:</b> \( x = \mu + z \cdot \sigma \)</li>
+                        <li><b>Teljes valószínűség:</b> \( P(A) = \sum P(B_i) \cdot P(A|B_i) \)</li>
+                        <li><b>Bayes-tétel:</b> \( P(B_i|A) = \frac{P(B_i) \cdot P(A|B_i)}{P(A)} \)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>6. Feladat: Becsléstan</h4>
+                    <ul>
+                        <li><b>Arány standard hiba:</b> \( s_p = \sqrt{\frac{p(1-p)}{n}} \cdot \sqrt{\frac{N-n}{N-1}} \)</li>
+                        <li><b>Átlag standard hiba:</b> \( s_{\bar{x}} = \frac{s}{\sqrt{n}} \cdot \sqrt{\frac{N-n}{N-1}} \)</li>
+                        <li><b>Hibahatár:</b> \( \Delta = z \cdot s_{becslő} \)</li>
+                        <li><b>Konf. intervallum:</b> \( [becslés \pm \Delta] \)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         <!-- 1. feladat -->
         <div class="card">
             <h2>1. feladat: Box-and-Whiskers diagram</h2>
