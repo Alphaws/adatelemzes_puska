@@ -34,9 +34,14 @@
 
         /* Nyomtatási optimalizálás */
         @media print {
+            * {
+                background: transparent !important;
+                color: black !important;
+                text-shadow: none !important;
+                box-shadow: none !important;
+            }
             body {
                 background-color: white !important;
-                color: black !important;
                 padding: 0;
             }
             .container {
@@ -48,11 +53,10 @@
             }
             .card {
                 page-break-before: always;
-                border: 1px solid #ccc !important;
-                box-shadow: none !important;
+                border: 1px solid #000 !important;
                 margin: 0 0 20px 0 !important;
                 padding: 20px !important;
-                border-left: 8px solid var(--accent) !important;
+                border-left: 10px solid black !important;
             }
             .card:first-of-type {
                 page-break-before: auto;
@@ -61,17 +65,19 @@
                 border: none !important;
                 page-break-inside: avoid;
             }
-            .megoldas-box {
-                background: #f0f0f0 !important;
-                border: 1px solid #333 !important;
-                color: black !important;
-            }
-            .formula-container {
-                border: 1px solid #333 !important;
+            .megoldas-box, .formula-container {
+                border: 2px solid #000 !important;
                 background: white !important;
+                padding: 10px !important;
             }
             .step {
-                border-left: 2px solid #ccc !important;
+                border-left: 2px solid #333 !important;
+            }
+            table, th, td {
+                border: 1px solid black !important;
+            }
+            th {
+                background: #eee !important; /* Enyhe szürke a fejlécnek még mehet */
             }
         }
 
